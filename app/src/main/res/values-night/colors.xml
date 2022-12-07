@@ -3,7 +3,7 @@
     <color name="secondary">#FF808E9A</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">#FF94B2C3</color>
-    <color name="primary">#FF82964B</color>
-    <color name="ripple_color">#6FCBFF</color>
+    <color name="background">#FF32453E</color>
+    <color name="primary">#FFEBA859</color>
+    <color name="ripple_color">#FF488f81</color>
 </resources>

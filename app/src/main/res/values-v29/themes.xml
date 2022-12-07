@@ -1,0 +1,5 @@
+<resources>
+    <style name="Base.Theme.DotaStats.V29" parent="Base.Theme.DotaStats">
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+</resources>

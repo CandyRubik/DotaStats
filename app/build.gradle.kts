@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "ru.rubik.dotastats"
-        minSdk = 21
+        minSdk = 28
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -21,6 +21,9 @@ android {
         release {
             isMinifyEnabled = false
         }
+    }
+    buildFeatures {
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
