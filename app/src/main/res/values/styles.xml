@@ -11,4 +11,26 @@
     <attr name="background_color" format="color" />
     <attr name="primary_color" format="color" />
     <attr name="ripple_color" format="color" />
+    <attr name="winLoseStatViewStyle" format="reference" />
+
+    <declare-styleable name="WinLoseStatView">
+        <attr name="positivePercent" format="integer"/>
+        <attr name="positiveColor" format="color"/>
+        <attr name="negativeColor" format="color"/>
+        <attr name="strokeColor" format="color"/>
+    </declare-styleable>
+
+    <style name="WinLoseStatViewStyle">
+        <item name="positivePercent">30</item>
+        <item name="positiveColor">?attr/primary_color</item>
+        <item name="negativeColor">?attr/ripple_color</item>
+        <item name="strokeColor">@color/black</item>
+    </style>
+
+    <style name="WinLoseStatViewStyle.Dark">
+        <item name="positivePercent">30</item>
+        <item name="positiveColor">?attr/primary_color</item>
+        <item name="negativeColor">?attr/ripple_color</item>
+        <item name="strokeColor">@color/white</item>
+    </style>
 </resources>

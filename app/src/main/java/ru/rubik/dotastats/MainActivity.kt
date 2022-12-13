@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import ru.rubik.dotastats.databinding.ActivityMainBinding
+import ru.rubik.dotastats.profile.WinLoseStatView
 
 class MainActivity : AppCompatActivity() {
     private val sharedPrefs by lazy {
@@ -30,6 +31,15 @@ class MainActivity : AppCompatActivity() {
 
             darkThemeButton.setOnClickListener {
                 saveAndSetDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+
+            custom.setOnClickListener {
+                (it as WinLoseStatView).setPositivePercent(80)
+            }
+
+            custom.setOnLongClickListener {
+                (it as WinLoseStatView).setPositivePercent(20)
+                true
             }
         }
     }
