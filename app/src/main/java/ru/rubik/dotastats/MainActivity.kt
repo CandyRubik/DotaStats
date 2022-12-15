@@ -4,7 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import ru.rubik.dotastats.databinding.ActivityMainBinding
+import ru.rubik.dotastats.heroes_stats.ui.HeroesStatsFragment
 import ru.rubik.dotastats.profile.WinLoseStatView
 
 class MainActivity : AppCompatActivity() {
@@ -34,12 +37,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             custom.setOnClickListener {
-                (it as WinLoseStatView).setPositivePercent(80)
-            }
-
-            custom.setOnLongClickListener {
-                (it as WinLoseStatView).setPositivePercent(20)
-                true
+                supportFragmentManager.commit {
+                    replace<HeroesStatsFragment>(container.id)
+                }
             }
         }
     }
