@@ -3,4 +3,5 @@
     <string name="system_theme_button">Системная</string>
     <string name="light_theme_button">Светлая</string>
     <string name="dark_theme_button">Темная</string>
+    <string name="turbo_win_rate_text">Turbo win rate</string>
 </resources>
