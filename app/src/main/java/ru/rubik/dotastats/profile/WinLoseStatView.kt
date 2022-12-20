@@ -24,7 +24,7 @@ class WinLoseStatView
     private val WITH = context.toDp(300f)
     private val HEIGHT = context.toDp(50f)
 
-    private var positivePercent = 50
+    private var positivePercent = DEFAULT_POSITIVE_VALUE
     private var strokeColor = Color.BLACK
     private var positiveColor = Color.GREEN
     private var negativeColor = Color.RED
@@ -67,7 +67,7 @@ class WinLoseStatView
             .obtainStyledAttributes(attrs, R.styleable.WinLoseStatView, defStyleAttr, defStyleRes)
             .apply {
                 try {
-                    positivePercent = getInt(R.styleable.WinLoseStatView_positivePercent, 50)
+                    positivePercent = getInt(R.styleable.WinLoseStatView_positivePercent, DEFAULT_POSITIVE_VALUE)
                     strokeColor = getColor(R.styleable.WinLoseStatView_strokeColor, strokeColor)
                     positiveColor = getColor(R.styleable.WinLoseStatView_positiveColor, positiveColor)
                     negativeColor = getColor(R.styleable.WinLoseStatView_negativeColor, negativeColor)
@@ -78,7 +78,7 @@ class WinLoseStatView
     }
 
     fun setPositivePercent(value: Int) {
-        positivePercent = value
+        positivePercent = value.coerceIn(MIN_DISPLAYABLE_VALUE.. MAX_DISPLAYABLE_VALUE)
         invalidate()
     }
 
@@ -143,6 +143,12 @@ class WinLoseStatView
         val positivePercent: Int,
         @IgnoredOnParcel val state: Parcelable? = null
     ) : BaseSavedState(state)
+
+    companion object {
+        const val MAX_DISPLAYABLE_VALUE = 100
+        const val MIN_DISPLAYABLE_VALUE = 0
+        const val DEFAULT_POSITIVE_VALUE = 50
+    }
 }
 
 fun Context.toDp(value: Float): Float {
