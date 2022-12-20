@@ -1,5 +1,8 @@
 package ru.rubik.dotastats.profile
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -7,7 +10,11 @@ import android.graphics.Paint
 import android.os.Parcelable
 import android.util.AttributeSet
 import android.util.Log
+import android.view.Gravity.apply
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.BounceInterpolator
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import ru.rubik.dotastats.R
@@ -28,6 +35,16 @@ class WinLoseStatView
     private var strokeColor = Color.BLACK
     private var positiveColor = Color.GREEN
     private var negativeColor = Color.RED
+
+
+    private val animator = ObjectAnimator().apply {
+        duration = 650
+        interpolator = AccelerateDecelerateInterpolator()
+        addUpdateListener {
+            positivePercent = (it.getAnimatedValue(POSITIVE_PVH_TITLE) as Float).toInt()
+            invalidate()
+        }
+    }
 
     private val strokePaint: Paint by lazy {
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -57,6 +74,13 @@ class WinLoseStatView
         attrs?.let {  initAttrs(context, it, defStyleAttr, defStyleRes) }
     }
 
+    private fun startAnimation() {
+        animator.cancel()
+        val positivePercentPVH = PropertyValuesHolder.ofFloat(POSITIVE_PVH_TITLE, 0f, positivePercent.toFloat())
+        animator.setValues(positivePercentPVH)
+        animator.start()
+    }
+
     private fun initAttrs(
         context: Context,
         attrs: AttributeSet,
@@ -71,6 +95,7 @@ class WinLoseStatView
                     strokeColor = getColor(R.styleable.WinLoseStatView_strokeColor, strokeColor)
                     positiveColor = getColor(R.styleable.WinLoseStatView_positiveColor, positiveColor)
                     negativeColor = getColor(R.styleable.WinLoseStatView_negativeColor, negativeColor)
+                    startAnimation()
                 } finally {
                     recycle()
                 }
@@ -79,19 +104,11 @@ class WinLoseStatView
 
     fun setPositivePercent(value: Int) {
         positivePercent = value.coerceIn(MIN_DISPLAYABLE_VALUE.. MAX_DISPLAYABLE_VALUE)
-        invalidate()
-    }
-
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-
-        Log.d("TAG", "onAttachedToWindow")
+        startAnimation()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-
-        Log.d("TAG", "onMeasure")
 
         setMeasuredDimension(
             resolveSize(WITH.toInt(), widthMeasureSpec) + paddingLeft + paddingRight,
@@ -99,14 +116,8 @@ class WinLoseStatView
         )
     }
 
-    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
-        super.onLayout(changed, left, top, right, bottom)
-
-        Log.d("TAG", "onLayout")
-    }
 
     override fun onDraw(canvas: Canvas?) {
-        Log.d("TAG", "onDraw")
         super.onDraw(canvas)
         canvas ?: return
 
@@ -116,12 +127,6 @@ class WinLoseStatView
         canvas.translate(STROKE_WITH, STROKE_WITH)
         canvas.drawRect(0f, 0f, WITH / 100 * positivePercent, HEIGHT - 2 * STROKE_WITH, fillPositivePaint)
         canvas.drawRect(WITH / 100 * positivePercent, 0f, WITH - 2 * STROKE_WITH, HEIGHT - 2 * STROKE_WITH, fillNegativePaint)
-    }
-
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-
-        Log.d("TAG", "onDetachedFromWindow")
     }
 
     override fun onSaveInstanceState(): Parcelable {
@@ -148,6 +153,7 @@ class WinLoseStatView
         const val MAX_DISPLAYABLE_VALUE = 100
         const val MIN_DISPLAYABLE_VALUE = 0
         const val DEFAULT_POSITIVE_VALUE = 50
+        const val POSITIVE_PVH_TITLE = "positivePercent"
     }
 }
 

@@ -2,8 +2,10 @@ package ru.rubik.dotastats.heroes_stats.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.ItemHeroStatBinding
 import ru.rubik.dotastats.heroes_stats.domain.entities.HeroStatsItem
 
@@ -25,6 +27,8 @@ class HeroesStatsAdapter(
     }
 
     override fun onBindViewHolder(holder: HeroStatViewHolder, position: Int) {
+        holder.itemView.animation =
+            AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_animation)
         holder.bind(itemsList[position])
     }
 }
