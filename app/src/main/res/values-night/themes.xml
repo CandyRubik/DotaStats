@@ -12,5 +12,6 @@
         <item name="background_color">@color/background_dark</item>
         <item name="ripple_color">@color/ripple_color_dark</item>
         <item name="primary_color">@color/primary_dark</item>
+        <item name="winLoseStatViewStyle">@style/WinLoseStatViewStyle.Dark</item>
     </style>
 </resources>

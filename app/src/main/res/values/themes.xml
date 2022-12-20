@@ -13,6 +13,7 @@
         <item name="background_color">@color/background_light</item>
         <item name="ripple_color">@color/ripple_color_light</item>
         <item name="primary_color">@color/primary_light</item>
+        <item name="winLoseStatViewStyle">@style/WinLoseStatViewStyle</item>
     </style>
 
     <style name="Theme.DotaStats" parent="Base.Theme.DotaStats" />

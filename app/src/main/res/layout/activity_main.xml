@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -30,4 +31,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/dark_theme_button" />
+
+    <ru.rubik.dotastats.profile.WinLoseStatView
+        android:id="@+id/custom"
+        android:layout_marginTop="20dp"
+        app:positivePercent="30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
