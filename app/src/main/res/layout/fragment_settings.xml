@@ -33,7 +33,7 @@
 
     <ru.rubik.dotastats.profile.WinLoseStatView
         android:id="@+id/custom"
-        app:positivePercent="30"
+        app:positivePercent="60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp" />
