@@ -38,7 +38,7 @@ class WinLoseStatView
 
 
     private val animator = ObjectAnimator().apply {
-        duration = 650
+        duration = ANIMATION_DURATION
         interpolator = AccelerateDecelerateInterpolator()
         addUpdateListener {
             positivePercent = (it.getAnimatedValue(POSITIVE_PVH_TITLE) as Float).toInt()
@@ -154,6 +154,7 @@ class WinLoseStatView
         const val MIN_DISPLAYABLE_VALUE = 0
         const val DEFAULT_POSITIVE_VALUE = 50
         const val POSITIVE_PVH_TITLE = "positivePercent"
+        const val ANIMATION_DURATION = 650L
     }
 }
 
