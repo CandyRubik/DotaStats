@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import ru.rubik.dotastats.settings.SettingsFragment
+import ru.rubik.dotastats.settings.presentation.ui.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 

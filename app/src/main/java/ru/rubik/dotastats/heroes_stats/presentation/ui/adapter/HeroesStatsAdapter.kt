@@ -1,4 +1,4 @@
-package ru.rubik.dotastats.heroes_stats.ui.adapter
+package ru.rubik.dotastats.heroes_stats.presentation.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.ItemHeroStatBinding
-import ru.rubik.dotastats.heroes_stats.domain.entities.HeroStatsItem
+import ru.rubik.dotastats.heroes_stats.domain.entities.HeroStat
 
 class HeroesStatsAdapter(
-    diffCallback: DiffUtil.ItemCallback<HeroStatsItem>,
-) : ListAdapter<HeroStatsItem, HeroStatViewHolder>(diffCallback) {
+    diffCallback: DiffUtil.ItemCallback<HeroStat>,
+) : ListAdapter<HeroStat, HeroStatViewHolder>(diffCallback) {
 
-    var itemsList: List<HeroStatsItem> = listOf()
+    var itemsList: List<HeroStat> = listOf()
         set(value) {
             field = value
             submitList(value)

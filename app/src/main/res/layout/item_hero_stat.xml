@@ -24,7 +24,7 @@
         android:textAlignment="center"
         android:text="@string/turbo_win_rate_text" />
 
-    <ru.rubik.dotastats.profile.WinLoseStatView
+    <ru.rubik.dotastats.shared.WinLoseStatView
         android:id="@+id/win_percent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

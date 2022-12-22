@@ -1,4 +1,4 @@
-package ru.rubik.dotastats.heroes_stats.ui
+package ru.rubik.dotastats.heroes_stats.presentation.ui
 
 import android.os.Bundle
 import android.view.View
@@ -9,17 +9,17 @@ import androidx.recyclerview.widget.DiffUtil
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.FragmentHeroesStatsBinding
-import ru.rubik.dotastats.heroes_stats.data.repository.HeroesStatsLocalRepository
-import ru.rubik.dotastats.heroes_stats.domain.entities.HeroStatsItem
+import ru.rubik.dotastats.heroes_stats.data.repository.HeroesRepositoryLocal
+import ru.rubik.dotastats.heroes_stats.domain.entities.HeroStat
 import ru.rubik.dotastats.heroes_stats.presentation.HeroStatsViewModel
 import ru.rubik.dotastats.heroes_stats.presentation.HeroStatsViewModelFactory
-import ru.rubik.dotastats.heroes_stats.ui.adapter.HeroesStatsAdapter
+import ru.rubik.dotastats.heroes_stats.presentation.ui.adapter.HeroesStatsAdapter
 
 class HeroesStatsFragment : Fragment(R.layout.fragment_heroes_stats) {
 
     private val viewModel by viewModels<HeroStatsViewModel> {
         HeroStatsViewModelFactory(
-            repository = HeroesStatsLocalRepository()
+            repository = HeroesRepositoryLocal()
         )
     }
     private val viewBinding: FragmentHeroesStatsBinding by viewBinding(FragmentHeroesStatsBinding::bind)
@@ -27,17 +27,17 @@ class HeroesStatsFragment : Fragment(R.layout.fragment_heroes_stats) {
     private val adapter by lazy {
         HeroesStatsAdapter(
             diffCallback = object :
-                DiffUtil.ItemCallback<HeroStatsItem>() {
+                DiffUtil.ItemCallback<HeroStat>() {
                 override fun areItemsTheSame(
-                    oldItem: HeroStatsItem,
-                    newItem: HeroStatsItem
+                    oldItem: HeroStat,
+                    newItem: HeroStat
                 ): Boolean {
                     return oldItem.name == newItem.name
                 }
 
                 override fun areContentsTheSame(
-                    oldItem: HeroStatsItem,
-                    newItem: HeroStatsItem
+                    oldItem: HeroStat,
+                    newItem: HeroStat
                 ): Boolean {
                     return oldItem == newItem
                 }

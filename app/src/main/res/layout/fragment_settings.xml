@@ -31,7 +31,7 @@
         android:layout_marginHorizontal="64dp"
         android:text="@string/dark_theme_button" />
 
-    <ru.rubik.dotastats.profile.WinLoseStatView
+    <ru.rubik.dotastats.shared.WinLoseStatView
         android:id="@+id/custom"
         app:positivePercent="60"
         android:layout_width="wrap_content"
