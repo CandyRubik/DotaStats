@@ -2,10 +2,13 @@ package ru.rubik.dotastats.heroes_stats.data.repository
 
 import ru.rubik.dotastats.heroes_stats.data.dto.HeroStats
 import ru.rubik.dotastats.heroes_stats.data.mappers.mapToDomain
-import ru.rubik.dotastats.heroes_stats.domain.entities.HeroStatsItem
+import ru.rubik.dotastats.heroes_stats.domain.entities.HeroStat
+import ru.rubik.dotastats.heroes_stats.domain.repository.HeroesRepository
 
-class HeroesStatsLocalRepository {
-    suspend fun getHeroes(): List<HeroStatsItem> {
+class HeroesRepositoryLocal
+    : HeroesRepository {
+
+    override suspend fun getHeroes(): List<HeroStat> {
         return listOf(
             HeroStats(
                 name = "Anti-Mage",

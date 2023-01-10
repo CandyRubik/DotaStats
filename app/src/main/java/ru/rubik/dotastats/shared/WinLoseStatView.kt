@@ -1,20 +1,15 @@
-package ru.rubik.dotastats.profile
+package ru.rubik.dotastats.shared
 
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
-import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Parcelable
 import android.util.AttributeSet
-import android.util.Log
-import android.view.Gravity.apply
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.AccelerateInterpolator
-import android.view.animation.BounceInterpolator
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import ru.rubik.dotastats.R

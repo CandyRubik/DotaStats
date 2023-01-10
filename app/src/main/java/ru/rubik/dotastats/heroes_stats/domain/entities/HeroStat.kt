@@ -1,6 +1,6 @@
 package ru.rubik.dotastats.heroes_stats.domain.entities
 
-data class HeroStatsItem(
+data class HeroStat(
     val name: String,
     val turboWinPercent: Int,
 )
