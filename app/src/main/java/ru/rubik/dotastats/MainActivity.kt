@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import ru.rubik.dotastats.login.presentation.ui.LoginFragment
 import ru.rubik.dotastats.settings.presentation.ui.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         savedInstanceState ?: supportFragmentManager.commit {
-            replace<SettingsFragment>(R.id.container)
+            replace<LoginFragment>(R.id.container)
         }
     }
 }
