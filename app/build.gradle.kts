@@ -45,5 +45,4 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6")
-    implementation("com.jakewharton.rxbinding4:rxbinding-core:4.0.0")
 }
