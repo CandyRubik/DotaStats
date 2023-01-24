@@ -3,27 +3,32 @@ package ru.rubik.dotastats.login.presentation.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.FragmentLoginBinding
-import ru.rubik.dotastats.login.data.repository.LoginLocalRepository
 import ru.rubik.dotastats.login.presentation.LoginViewModel
 import ru.rubik.dotastats.login.presentation.LoginViewModelFactory
 import ru.rubik.dotastats.login.presentation.state.LoginUiState
 import ru.rubik.dotastats.login.presentation.state.NavigationState
-import ru.rubik.dotastats.profile.ProfileFragment
+import ru.rubik.dotastats.main.MainActivity.Companion.CREDENTIALS_KEY
+import ru.rubik.dotastats.shared.data.repository.SteamIdLocalRepository
 import kotlin.random.Random
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val viewModel by viewModels<LoginViewModel> {
         LoginViewModelFactory(
-            loginRepository = LoginLocalRepository()
+            steamIdRepository = SteamIdLocalRepository(
+                sharedPreferences = requireContext().getSharedPreferences(
+                    CREDENTIALS_KEY, AppCompatActivity.MODE_PRIVATE
+                )
+            )
         )
     }
 
@@ -46,13 +51,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         when (uiState.contentState) {
             is NavigationState.NavigateToProfile -> {
-                parentFragmentManager.commit {
-                    replace(
-                        R.id.container,
-                        ProfileFragment.newInstance(uiState.contentState.user),
-                    )
-                    addToBackStack(null)
-                }
+//                findNavController().navigate(R.id.action_loginFragment_to_tabsFragment)
             }
             NavigationState.ShowErrorToast -> {
                 Toast.makeText(
@@ -72,10 +71,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun setupViews() = with(binding) {
         loginEditText.addTextChangedListener {
             viewModel.updateLogin(it.toString())
-        }
-
-        passwordEditText.addTextChangedListener {
-            viewModel.updatePassword(it.toString())
         }
 
         loginButton.setOnClickListener {

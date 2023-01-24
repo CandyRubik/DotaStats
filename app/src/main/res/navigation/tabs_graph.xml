@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tabs_graph"
+    app:startDestination="@id/heroesStatsFragment">
+    <fragment
+        android:id="@+id/heroesStatsFragment"
+        android:name="ru.rubik.dotastats.heroes_stats.presentation.ui.HeroesStatsFragment"
+        android:label="HeroesStatsFragment"
+        tools:layout="@layout/fragment_heroes_stats"/>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="ru.rubik.dotastats.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="ru.rubik.dotastats.notes.NotesFragment"
+        android:label="NotesFragment"
+        tools:layout="@layout/fragment_notes"/>
+</navigation>

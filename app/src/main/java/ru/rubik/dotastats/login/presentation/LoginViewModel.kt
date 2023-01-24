@@ -7,12 +7,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import ru.rubik.dotastats.login.domain.entities.User
 import ru.rubik.dotastats.login.domain.repository.LoginRepository
 import ru.rubik.dotastats.login.presentation.state.LoginUiState
 import ru.rubik.dotastats.login.presentation.state.NavigationState
+import ru.rubik.dotastats.shared.steam_id.domain.repository.SteamIdRepository
 
 class LoginViewModel(
-    private val loginRepository: LoginRepository,
+    private val steamIdRepository: SteamIdRepository
 ) : ViewModel() {
 
     private val _loginUiState = MutableStateFlow(LoginUiState())
@@ -30,25 +32,10 @@ class LoginViewModel(
         }
     }
 
-    fun updatePassword(text: String) {
-        _loginUiState.update {
-            it.copy(
-                password = text,
-                contentState = NavigationState.Input,
-                isLoginButtonAvailable = checkIsLoginButtonAvailable(
-                    password = text,
-                ),
-            )
-        }
-    }
-
     fun login() {
         viewModelScope.launch(Dispatchers.IO) {
-            val user = loginRepository.login(
-                login = _loginUiState.value.login,
-                password = _loginUiState.value.password,
-            )
-
+            steamIdRepository.setSteamId(_loginUiState.value.login)
+            val user = User(_loginUiState.value.login)
             if (user == null) {
                 _loginUiState.update {
                     it.copy(
@@ -68,9 +55,7 @@ class LoginViewModel(
 
     private fun checkIsLoginButtonAvailable(
         login: String? = null,
-        password: String? = null
     ): Boolean {
-        return password?.isNotBlank() ?: _loginUiState.value.password.isNotBlank()
-                && login?.isNotBlank() ?: _loginUiState.value.login.isNotBlank()
+        return login?.isNotBlank() ?: _loginUiState.value.login.isNotBlank()
     }
 }

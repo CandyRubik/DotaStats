@@ -49,12 +49,6 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             darkThemeButton.setOnClickListener {
                 viewModel.onDarkThemeButtonClicked()
             }
-
-            custom.setOnClickListener {
-                parentFragmentManager.commit {
-                    replace<HeroesStatsFragment>(R.id.container)
-                }
-            }
         }
     }
 

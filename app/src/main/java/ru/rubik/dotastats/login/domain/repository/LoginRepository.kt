@@ -4,5 +4,5 @@ import ru.rubik.dotastats.login.domain.entities.User
 
 interface LoginRepository {
 
-    suspend fun login(login: String, password: String): User?
+    suspend fun login(login: String): User?
 }
