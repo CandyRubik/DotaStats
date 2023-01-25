@@ -1,19 +1,19 @@
-package ru.rubik.dotastats.heroes_stats.presentation
+package ru.rubik.dotastats.heroes.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import ru.rubik.dotastats.heroes_stats.data.repository.HeroesRepositoryLocal
-import ru.rubik.dotastats.heroes_stats.domain.entities.HeroStat
+import ru.rubik.dotastats.heroes.data.repository.HeroesRepositoryLocal
+import ru.rubik.dotastats.heroes.domain.entities.Hero
 
-class HeroStatsViewModel(
+class HeroesViewModel(
     private val repository: HeroesRepositoryLocal,
 ) : ViewModel() {
 
-    private val _list: MutableStateFlow<List<HeroStat>> = MutableStateFlow(emptyList())
-    val list: StateFlow<List<HeroStat>> = _list
+    private val _list: MutableStateFlow<List<Hero>> = MutableStateFlow(emptyList())
+    val list: StateFlow<List<Hero>> = _list
 
     init {
         fetchData()

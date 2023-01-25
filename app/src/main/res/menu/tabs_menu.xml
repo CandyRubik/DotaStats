@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@id/heroesStatsFragment"
+    <item android:id="@+id/heroes_menu"
         android:icon="@drawable/dota_2_24"
         android:title="@string/heroes_menu_title"/>
-    <item android:id="@id/profileFragment"
+    <item android:id="@+id/profile_menu"
         android:icon="@drawable/round_person_24"
         android:title="@string/profile_menu_title"/>
-    <item android:id="@id/notesFragment"
+    <item android:id="@+id/notes_menu"
         android:icon="@drawable/round_dashboard_24"
         android:title="@string/notes_menu_title"/>
 </menu>

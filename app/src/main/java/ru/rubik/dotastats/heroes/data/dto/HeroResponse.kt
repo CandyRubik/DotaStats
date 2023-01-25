@@ -1,6 +1,6 @@
-package ru.rubik.dotastats.heroes_stats.data.dto
+package ru.rubik.dotastats.heroes.data.dto
 
-class HeroStats(
+class HeroResponse(
     val name: String,
     val turboWin: Int,
     val turboTotal: Int,

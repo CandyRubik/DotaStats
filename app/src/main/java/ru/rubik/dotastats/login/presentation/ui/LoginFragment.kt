@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -16,7 +17,6 @@ import ru.rubik.dotastats.login.presentation.LoginViewModel
 import ru.rubik.dotastats.login.presentation.LoginViewModelFactory
 import ru.rubik.dotastats.login.presentation.state.LoginUiState
 import ru.rubik.dotastats.login.presentation.state.NavigationState
-import ru.rubik.dotastats.main.MainActivity.Companion.CREDENTIALS_KEY
 import ru.rubik.dotastats.shared.data.repository.SteamIdLocalRepository
 import kotlin.random.Random
 
@@ -26,7 +26,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         LoginViewModelFactory(
             steamIdRepository = SteamIdLocalRepository(
                 sharedPreferences = requireContext().getSharedPreferences(
-                    CREDENTIALS_KEY, AppCompatActivity.MODE_PRIVATE
+                    "CREDENTIALS_KEY", AppCompatActivity.MODE_PRIVATE
                 )
             )
         )
@@ -51,7 +51,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         when (uiState.contentState) {
             is NavigationState.NavigateToProfile -> {
-//                findNavController().navigate(R.id.action_loginFragment_to_tabsFragment)
+                val result = findNavController().popBackStack(R.id.auth_graph, true)
+                if (result.not()) {
+                    // we can't open new destination with this action
+                    // --> we opened Auth flow from splash
+                    // --> need to open main graph
+                    findNavController().navigate(R.id.mainFragment)
+                }
             }
             NavigationState.ShowErrorToast -> {
                 Toast.makeText(

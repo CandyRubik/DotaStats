@@ -1,4 +1,4 @@
-package ru.rubik.dotastats.heroes_stats.presentation.ui.adapter
+package ru.rubik.dotastats.heroes.presentation.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,26 +7,26 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.ItemHeroStatBinding
-import ru.rubik.dotastats.heroes_stats.domain.entities.HeroStat
+import ru.rubik.dotastats.heroes.domain.entities.Hero
 
-class HeroesStatsAdapter(
-    diffCallback: DiffUtil.ItemCallback<HeroStat>,
-) : ListAdapter<HeroStat, HeroStatViewHolder>(diffCallback) {
+class HeroesAdapter(
+    diffCallback: DiffUtil.ItemCallback<Hero>,
+) : ListAdapter<Hero, HeroViewHolder>(diffCallback) {
 
-    var itemsList: List<HeroStat> = listOf()
+    var itemsList: List<Hero> = listOf()
         set(value) {
             field = value
             submitList(value)
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroStatViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroViewHolder {
         val binding =
             ItemHeroStatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return HeroStatViewHolder(binding)
+        return HeroViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: HeroStatViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HeroViewHolder, position: Int) {
         holder.itemView.animation =
             AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_animation)
         holder.bind(itemsList[position])

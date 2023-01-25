@@ -1,57 +1,56 @@
-package ru.rubik.dotastats.heroes_stats.data.repository
+package ru.rubik.dotastats.heroes.data.repository
 
-import ru.rubik.dotastats.heroes_stats.data.dto.HeroStats
-import ru.rubik.dotastats.heroes_stats.data.mappers.mapToDomain
-import ru.rubik.dotastats.heroes_stats.domain.entities.HeroStat
-import ru.rubik.dotastats.heroes_stats.domain.repository.HeroesRepository
+import ru.rubik.dotastats.heroes.data.dto.HeroResponse
+import ru.rubik.dotastats.heroes.data.mappers.HeroesMapper
+import ru.rubik.dotastats.heroes.domain.entities.Hero
+import ru.rubik.dotastats.heroes.domain.repository.HeroesRepository
 
-class HeroesRepositoryLocal
-    : HeroesRepository {
+class HeroesRepositoryLocal(
+    private val webMapper: HeroesMapper,
+) : HeroesRepository {
 
-    override suspend fun getHeroes(): List<HeroStat> {
+    override suspend fun getHeroes(): List<Hero> {
         return listOf(
-            HeroStats(
+            HeroResponse(
                 name = "Anti-Mage",
                 turboWin = 213339,
                 turboTotal = 406818,
             ),
-            HeroStats(
+            HeroResponse(
                 name = "Axe",
                 turboWin = 278749,
                 turboTotal = 519059,
             ),
-            HeroStats(
+            HeroResponse(
                 name = "Bane",
                 turboWin = 47966,
                 turboTotal = 103555,
             ),
-            HeroStats(
+            HeroResponse(
                 name = "Bloodseeker",
                 turboWin = 309628,
                 turboTotal = 103555,
             ),
-            HeroStats(
+            HeroResponse(
                 name = "Crystal Maiden",
                 turboWin = 314697,
                 turboTotal = 622079,
             ),
-            HeroStats(
+            HeroResponse(
                 name = "Drow Ranger",
                 turboWin = 467957,
                 turboTotal = 855023,
             ),
-            HeroStats(
+            HeroResponse(
                 name = "Earthshaker",
                 turboWin = 236448,
                 turboTotal = 481392,
             ),
-            HeroStats(
+            HeroResponse(
                 name = "Juggernaut",
                 turboWin = 548045,
                 turboTotal = 1070586,
             ),
-        ).map {
-            it.mapToDomain()
-        }
+        ).map(webMapper::mapToHero)
     }
 }

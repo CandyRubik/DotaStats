@@ -36,6 +36,7 @@ class LoginViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             steamIdRepository.setSteamId(_loginUiState.value.login)
             val user = User(_loginUiState.value.login)
+                //TODO check is exist profile in remote
             if (user == null) {
                 _loginUiState.update {
                     it.copy(

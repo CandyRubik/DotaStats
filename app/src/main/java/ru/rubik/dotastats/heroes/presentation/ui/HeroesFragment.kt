@@ -1,4 +1,4 @@
-package ru.rubik.dotastats.heroes_stats.presentation.ui
+package ru.rubik.dotastats.heroes.presentation.ui
 
 import android.os.Bundle
 import android.view.View
@@ -9,35 +9,38 @@ import androidx.recyclerview.widget.DiffUtil
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.FragmentHeroesStatsBinding
-import ru.rubik.dotastats.heroes_stats.data.repository.HeroesRepositoryLocal
-import ru.rubik.dotastats.heroes_stats.domain.entities.HeroStat
-import ru.rubik.dotastats.heroes_stats.presentation.HeroStatsViewModel
-import ru.rubik.dotastats.heroes_stats.presentation.HeroStatsViewModelFactory
-import ru.rubik.dotastats.heroes_stats.presentation.ui.adapter.HeroesStatsAdapter
+import ru.rubik.dotastats.heroes.data.mappers.HeroesMapper
+import ru.rubik.dotastats.heroes.data.repository.HeroesRepositoryLocal
+import ru.rubik.dotastats.heroes.domain.entities.Hero
+import ru.rubik.dotastats.heroes.presentation.HeroesViewModel
+import ru.rubik.dotastats.heroes.presentation.HeroesViewModelFactory
+import ru.rubik.dotastats.heroes.presentation.ui.adapter.HeroesAdapter
 
-class HeroesStatsFragment : Fragment(R.layout.fragment_heroes_stats) {
+class HeroesFragment : Fragment(R.layout.fragment_heroes_stats) {
 
-    private val viewModel by viewModels<HeroStatsViewModel> {
-        HeroStatsViewModelFactory(
-            repository = HeroesRepositoryLocal()
+    private val viewModel by viewModels<HeroesViewModel> {
+        HeroesViewModelFactory(
+            repository = HeroesRepositoryLocal(
+                webMapper = HeroesMapper()
+            )
         )
     }
     private val viewBinding: FragmentHeroesStatsBinding by viewBinding(FragmentHeroesStatsBinding::bind)
 
     private val adapter by lazy {
-        HeroesStatsAdapter(
+        HeroesAdapter(
             diffCallback = object :
-                DiffUtil.ItemCallback<HeroStat>() {
+                DiffUtil.ItemCallback<Hero>() {
                 override fun areItemsTheSame(
-                    oldItem: HeroStat,
-                    newItem: HeroStat
+                    oldItem: Hero,
+                    newItem: Hero
                 ): Boolean {
                     return oldItem.name == newItem.name
                 }
 
                 override fun areContentsTheSame(
-                    oldItem: HeroStat,
-                    newItem: HeroStat
+                    oldItem: Hero,
+                    newItem: Hero
                 ): Boolean {
                     return oldItem == newItem
                 }
