@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -17,18 +16,15 @@ import ru.rubik.dotastats.login.presentation.LoginViewModel
 import ru.rubik.dotastats.login.presentation.LoginViewModelFactory
 import ru.rubik.dotastats.login.presentation.state.LoginUiState
 import ru.rubik.dotastats.login.presentation.state.NavigationState
-import ru.rubik.dotastats.shared.data.repository.SteamIdLocalRepository
+import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
+import ru.rubik.dotastats.shared.steamId.data.repository.SteamIdLocalRepository
 import kotlin.random.Random
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val viewModel by viewModels<LoginViewModel> {
         LoginViewModelFactory(
-            steamIdRepository = SteamIdLocalRepository(
-                sharedPreferences = requireContext().getSharedPreferences(
-                    "CREDENTIALS_KEY", AppCompatActivity.MODE_PRIVATE
-                )
-            )
+            steamIdRepository = GlobalServiceLocator.provideSteamIdRepository()
         )
     }
 
@@ -40,15 +36,16 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         setupViews()
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.loginUiState.collect(this@LoginFragment::obtainUiState)
+            viewModel.loginUiState.collect(::obtainUiState)
+        }
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.isLoginButtonAvailable.collect(::obtainLoginButtonEnabled)
         }
     }
 
     private fun obtainUiState(
         uiState: LoginUiState,
     ) {
-        binding.loginButton.isEnabled = uiState.isLoginButtonAvailable
-
         when (uiState.contentState) {
             is NavigationState.NavigateToProfile -> {
                 val result = findNavController().popBackStack(R.id.auth_graph, true)
@@ -72,6 +69,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 binding.title.text = randomEmoji
             }
         }
+    }
+
+    private fun obtainLoginButtonEnabled(isEnabled: Boolean) {
+        binding.loginButton.isEnabled = isEnabled
     }
 
     private fun setupViews() = with(binding) {

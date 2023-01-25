@@ -11,7 +11,7 @@ import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.FragmentHeroesStatsBinding
 import ru.rubik.dotastats.heroes.data.mappers.HeroesMapper
 import ru.rubik.dotastats.heroes.data.repository.HeroesRepositoryLocal
-import ru.rubik.dotastats.heroes.domain.entities.Hero
+import ru.rubik.dotastats.heroes.domain.models.Hero
 import ru.rubik.dotastats.heroes.presentation.HeroesViewModel
 import ru.rubik.dotastats.heroes.presentation.HeroesViewModelFactory
 import ru.rubik.dotastats.heroes.presentation.ui.adapter.HeroesAdapter

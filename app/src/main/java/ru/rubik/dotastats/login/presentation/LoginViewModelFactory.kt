@@ -2,7 +2,7 @@ package ru.rubik.dotastats.login.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import ru.rubik.dotastats.shared.steam_id.domain.repository.SteamIdRepository
+import ru.rubik.dotastats.shared.steamId.domain.repository.SteamIdRepository
 
 class LoginViewModelFactory(
     private val steamIdRepository: SteamIdRepository,

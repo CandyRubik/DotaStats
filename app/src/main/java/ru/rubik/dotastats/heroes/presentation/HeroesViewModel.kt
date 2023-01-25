@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import ru.rubik.dotastats.heroes.data.repository.HeroesRepositoryLocal
-import ru.rubik.dotastats.heroes.domain.entities.Hero
+import ru.rubik.dotastats.heroes.domain.models.Hero
 
 class HeroesViewModel(
     private val repository: HeroesRepositoryLocal,

@@ -1,7 +1,7 @@
 package ru.rubik.dotastats.heroes.data.mappers
 
-import ru.rubik.dotastats.heroes.data.dto.HeroResponse
-import ru.rubik.dotastats.heroes.domain.entities.Hero
+import ru.rubik.dotastats.heroes.data.entities.HeroResponse
+import ru.rubik.dotastats.heroes.domain.models.Hero
 
 class HeroesMapper {
 

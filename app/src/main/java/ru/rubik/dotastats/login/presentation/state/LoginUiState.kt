@@ -4,7 +4,6 @@ import ru.rubik.dotastats.login.domain.entities.User
 
 data class LoginUiState(
     val login: String = "",
-    val isLoginButtonAvailable: Boolean = false,
     val contentState: NavigationState = NavigationState.Input,
 )
 

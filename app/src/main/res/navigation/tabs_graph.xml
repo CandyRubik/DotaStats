@@ -6,7 +6,7 @@
     app:startDestination="@id/heroesStatsFragment">
     <fragment
         android:id="@+id/heroesStatsFragment"
-        android:name="ru.rubik.dotastats.heroes_stats.presentation.ui.HeroesStatsFragment"
+        android:name="ru.rubik.dotastats.heroes.presentation.ui.HeroesFragment"
         android:label="HeroesStatsFragment"
         tools:layout="@layout/fragment_heroes_stats"/>
     <fragment
@@ -16,7 +16,7 @@
         tools:layout="@layout/fragment_profile"/>
     <fragment
         android:id="@+id/notesFragment"
-        android:name="ru.rubik.dotastats.notes.NotesFragment"
+        android:name="ru.rubik.dotastats.notes.all.presentation.ui.NotesFragment"
         android:label="NotesFragment"
         tools:layout="@layout/fragment_notes"/>
 </navigation>

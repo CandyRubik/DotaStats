@@ -1,8 +1,8 @@
 package ru.rubik.dotastats.heroes.data.repository
 
-import ru.rubik.dotastats.heroes.data.dto.HeroResponse
+import ru.rubik.dotastats.heroes.data.entities.HeroResponse
 import ru.rubik.dotastats.heroes.data.mappers.HeroesMapper
-import ru.rubik.dotastats.heroes.domain.entities.Hero
+import ru.rubik.dotastats.heroes.domain.models.Hero
 import ru.rubik.dotastats.heroes.domain.repository.HeroesRepository
 
 class HeroesRepositoryLocal(
