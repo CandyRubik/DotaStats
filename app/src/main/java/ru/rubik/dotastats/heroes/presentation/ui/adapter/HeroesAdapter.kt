@@ -29,6 +29,6 @@ class HeroesAdapter(
     override fun onBindViewHolder(holder: HeroViewHolder, position: Int) {
         holder.itemView.animation =
             AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_animation)
-        holder.bind(itemsList[position])
+        holder.bind(getItem(position))
     }
 }

@@ -27,13 +27,9 @@ class NotesAdapter(
         return NoteViewHolder(binding, onItemClickListener)
     }
 
-    override fun getItemCount(): Int {
-        return itemsList.size
-    }
-
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.itemView.animation =
             AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_animation)
-        holder.bind(itemsList[position])
+        holder.bind(getItem(position))
     }
 }
