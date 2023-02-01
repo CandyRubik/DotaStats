@@ -5,6 +5,7 @@ import coil.load
 import coil.size.Dimension
 import coil.transform.CircleCropTransformation
 import coil.transform.RoundedCornersTransformation
+import kotlinx.coroutines.delay
 import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.ItemRecentPlayedMatchBinding
 import ru.rubik.dotastats.profile.domain.models.MatchInfo
@@ -16,9 +17,9 @@ class RecentPlayedMatchViewHolder(
     fun bind(data: MatchInfo) {
         with(binding) {
             image.load(data.heroUrl) {
+                crossfade(true)
                 placeholder(R.drawable.dialog_bg)
-                transformations(RoundedCornersTransformation(20f))
-                size(64, 32)
+                transformations(RoundedCornersTransformation(8f))
             }
             kills.text = data.kills.toString()
             deaths.text = data.deaths.toString()
