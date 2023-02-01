@@ -13,6 +13,7 @@ import ru.rubik.dotastats.databinding.FragmentNotesBinding
 import ru.rubik.dotastats.notes.all.domain.models.Note
 import ru.rubik.dotastats.notes.all.presentation.NotesViewModel
 import ru.rubik.dotastats.notes.all.presentation.ui.adapter.NotesAdapter
+import ru.rubik.dotastats.profile.presentation.ui.adapter.RecentPlayedMatchAdapter
 
 class NotesFragment : Fragment(R.layout.fragment_notes) {
 

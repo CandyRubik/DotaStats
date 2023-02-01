@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import ru.rubik.dotastats.notes.all.data.dao.NotesDao
 import ru.rubik.dotastats.notes.all.data.entities.NoteDto
 
-@Database(entities = [NoteDto::class], version = 1, exportSchema = false)
+@Database(entities = [NoteDto::class], version = 1, exportSchema = true)
 abstract class NotesDatabase: RoomDatabase() {
 
     abstract fun noteDao(): NotesDao

@@ -2,7 +2,7 @@ package ru.rubik.dotastats.settings.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import ru.rubik.dotastats.settings.domain.usecase.NightModeUseCase
+import ru.rubik.dotastats.shared.nightMode.domain.usecase.NightModeUseCase
 
 class SettingsViewModelFactory(private val nightModeUseCase: NightModeUseCase) :
     ViewModelProvider.NewInstanceFactory() {

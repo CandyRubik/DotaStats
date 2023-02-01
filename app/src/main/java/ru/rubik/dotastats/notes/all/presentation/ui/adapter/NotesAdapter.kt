@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.ItemNoteBinding
 import ru.rubik.dotastats.notes.all.domain.models.Note
+import ru.rubik.dotastats.profile.presentation.ui.adapter.RecentPlayedMatchViewHolder
 
 class NotesAdapter(
     diffCallback: DiffUtil.ItemCallback<Note>,

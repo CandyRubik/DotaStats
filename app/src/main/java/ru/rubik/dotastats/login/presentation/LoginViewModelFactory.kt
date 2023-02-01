@@ -2,10 +2,13 @@ package ru.rubik.dotastats.login.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import ru.rubik.dotastats.login.domain.repository.ProfileRepository
+import ru.rubik.dotastats.login.domain.usecases.ProfileUseCase
 import ru.rubik.dotastats.shared.steamId.domain.repository.SteamIdRepository
 
 class LoginViewModelFactory(
     private val steamIdRepository: SteamIdRepository,
+    private val profileUseCase: ProfileUseCase,
 ) :
     ViewModelProvider.NewInstanceFactory() {
 
@@ -13,7 +16,8 @@ class LoginViewModelFactory(
 
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             return LoginViewModel(
-                steamIdRepository = steamIdRepository
+                steamIdRepository = steamIdRepository,
+                profileUseCase = profileUseCase,
             ) as T
         }
 

@@ -2,10 +2,10 @@ package ru.rubik.dotastats.heroes.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import ru.rubik.dotastats.heroes.data.repository.HeroesRepositoryLocal
+import ru.rubik.dotastats.shared.heroes.domain.repository.HeroRepository
 
 @Suppress("UNCHECKED_CAST")
-class HeroesViewModelFactory(private val repository: HeroesRepositoryLocal)
+class HeroesViewModelFactory(private val repository: HeroRepository)
     : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

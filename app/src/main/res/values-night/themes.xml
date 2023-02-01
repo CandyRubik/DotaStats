@@ -1,17 +1,16 @@
 <resources>
     <style name="Base.Theme.DotaStats" parent="Theme.MaterialComponents.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">?attr/primary_color</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorOnPrimary">@color/background_light</item>
+
         <item name="android:windowBackground">?attr/background_color</item>
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:statusBarColor">@color/accent</item>
+
 
         <item name="android:buttonStyle">@style/Widget.DotaStats.Button</item>
         <item name="background_color">@color/background_dark</item>
-        <item name="ripple_color">@color/ripple_color_dark</item>
-        <item name="primary_color">@color/primary_dark</item>
+        <item name="primary_color">@color/background_light</item>
         <item name="winLoseStatViewStyle">@style/WinLoseStatViewStyle.Dark</item>
     </style>
 </resources>

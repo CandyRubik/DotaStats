@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="secondary">#FF808E9A</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background_light">#FF94B2C3</color>
-    <color name="background_dark">#FF32453E</color>
-    <color name="primary_light">#FF82964B</color>
-    <color name="primary_dark">#FFEBA859</color>
-    <color name="ripple_color_light">#FF6FCBFF</color>
-    <color name="ripple_color_dark">#FF488f81</color>
+    <color name="background_light">#FFFFFFFF</color>
+    <color name="background_dark">#FF030305</color>
+    <color name="accent">#FF8E71E5</color>
+    <color name="positive_color">#FF6FAE95</color>
+    <color name="negative_color">#FFDB5C42</color>
 </resources>

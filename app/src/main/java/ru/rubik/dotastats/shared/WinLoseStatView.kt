@@ -13,6 +13,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import ru.rubik.dotastats.R
+import kotlin.math.min
 
 class WinLoseStatView
 @JvmOverloads constructor(
@@ -22,9 +23,8 @@ class WinLoseStatView
     defStyleRes: Int = R.style.WinLoseStatViewStyle,
 ) : View(context, attrs, defStyleAttr, defStyleRes) {
 
-    private val STROKE_WITH = context.toDp(3f)
-    private val WITH = context.toDp(300f)
-    private val HEIGHT = context.toDp(50f)
+    private val WITH = context.getWith()
+    private val HEIGHT = context.toDp(20f)
 
     private var positivePercent = DEFAULT_POSITIVE_VALUE
     private var strokeColor = Color.BLACK
@@ -41,18 +41,9 @@ class WinLoseStatView
         }
     }
 
-    private val strokePaint: Paint by lazy {
-        Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            style = Paint.Style.STROKE
-            strokeWidth = STROKE_WITH
-            color = strokeColor
-        }
-    }
-
     private val fillPositivePaint: Paint by lazy {
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
             style = Paint.Style.FILL
-            strokeWidth = STROKE_WITH
             color = positiveColor
         }
     }
@@ -60,7 +51,6 @@ class WinLoseStatView
     private val fillNegativePaint: Paint by lazy {
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
             style = Paint.Style.FILL
-            strokeWidth = STROKE_WITH
             color = negativeColor
         }
     }
@@ -103,12 +93,27 @@ class WinLoseStatView
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        setMeasuredDimension(
-            resolveSize(WITH.toInt(), widthMeasureSpec) + paddingLeft + paddingRight,
-            resolveSize(HEIGHT.toInt(), heightMeasureSpec) + paddingTop + paddingBottom,
-        )
+        val desiredWidth = WITH.toInt() + paddingLeft + paddingRight
+        val desiredHeight = HEIGHT.toInt() + paddingTop + paddingBottom
+
+        setMeasuredDimension(measureDimension(desiredWidth, widthMeasureSpec),
+            measureDimension(desiredHeight, heightMeasureSpec));
+    }
+
+    private fun measureDimension(desiredSize: Int, measureSpec: Int): Int {
+        var result: Int
+        val specMode = MeasureSpec.getMode(measureSpec)
+        val specSize = MeasureSpec.getSize(measureSpec)
+        if (specMode == MeasureSpec.EXACTLY) {
+            result = specSize
+        } else {
+            result = desiredSize
+            if (specMode == MeasureSpec.AT_MOST) {
+                result = min(result, specSize)
+            }
+        }
+        return result
     }
 
 
@@ -118,10 +123,8 @@ class WinLoseStatView
 
         canvas.translate(paddingLeft.toFloat(), paddingTop.toFloat())
 
-        canvas.drawRect(0f, 0f, WITH, HEIGHT, strokePaint)
-        canvas.translate(STROKE_WITH, STROKE_WITH)
-        canvas.drawRect(0f, 0f, WITH / 100 * positivePercent, HEIGHT - 2 * STROKE_WITH, fillPositivePaint)
-        canvas.drawRect(WITH / 100 * positivePercent, 0f, WITH - 2 * STROKE_WITH, HEIGHT - 2 * STROKE_WITH, fillNegativePaint)
+        canvas.drawRect(0f, 0f, WITH / 100 * positivePercent, HEIGHT, fillPositivePaint)
+        canvas.drawRect(WITH / 100 * positivePercent, 0f, WITH, HEIGHT, fillNegativePaint)
     }
 
     override fun onSaveInstanceState(): Parcelable {
@@ -155,4 +158,8 @@ class WinLoseStatView
 
 fun Context.toDp(value: Float): Float {
     return resources.displayMetrics.density * value
+}
+
+fun Context.getWith(): Float {
+    return resources.displayMetrics.widthPixels.toFloat()
 }
