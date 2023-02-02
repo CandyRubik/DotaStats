@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="ru.rubik.dotastats.profile.ProfileFragment"
+        android:name="ru.rubik.dotastats.profile.presentation.ui.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile"/>
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="ru.rubik.dotastats.settings.presentation.ui.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

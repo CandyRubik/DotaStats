@@ -23,8 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="20dp"
-        app:endIconMode="custom"
-        app:endIconDrawable="@drawable/round_question_mark_24"
         android:hint="@string/login_field_hint">
 
         <com.google.android.material.textfield.TextInputEditText

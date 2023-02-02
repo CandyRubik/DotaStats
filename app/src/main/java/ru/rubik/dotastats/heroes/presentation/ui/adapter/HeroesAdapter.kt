@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.ItemHeroStatBinding
-import ru.rubik.dotastats.heroes.domain.entities.Hero
+import ru.rubik.dotastats.shared.heroes.domain.models.Hero
 
 class HeroesAdapter(
     diffCallback: DiffUtil.ItemCallback<Hero>,
@@ -29,6 +29,6 @@ class HeroesAdapter(
     override fun onBindViewHolder(holder: HeroViewHolder, position: Int) {
         holder.itemView.animation =
             AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_animation)
-        holder.bind(itemsList[position])
+        holder.bind(getItem(position))
     }
 }

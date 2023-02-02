@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.DotaStats.Header" parent="TextAppearance.MaterialComponents.Headline4">
+         <item name="android:textAlignment">center</item>
+         <item name="android:textColor">?attr/primary_color</item>
+         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.DotaStats.Body" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">?attr/primary_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.DotaStats.Field" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">?attr/primary_color</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.DotaStats.Field.Center" parent="TextAppearance.DotaStats.Field">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

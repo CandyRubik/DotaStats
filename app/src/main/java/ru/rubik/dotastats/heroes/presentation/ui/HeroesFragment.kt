@@ -9,20 +9,19 @@ import androidx.recyclerview.widget.DiffUtil
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.FragmentHeroesStatsBinding
-import ru.rubik.dotastats.heroes.data.mappers.HeroesMapper
-import ru.rubik.dotastats.heroes.data.repository.HeroesRepositoryLocal
-import ru.rubik.dotastats.heroes.domain.entities.Hero
 import ru.rubik.dotastats.heroes.presentation.HeroesViewModel
 import ru.rubik.dotastats.heroes.presentation.HeroesViewModelFactory
 import ru.rubik.dotastats.heroes.presentation.ui.adapter.HeroesAdapter
+import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
+import ru.rubik.dotastats.shared.heroes.data.mappers.HeroesMapper
+import ru.rubik.dotastats.shared.heroes.data.repository.HeroRepositoryImpl
+import ru.rubik.dotastats.shared.heroes.domain.models.Hero
 
 class HeroesFragment : Fragment(R.layout.fragment_heroes_stats) {
 
     private val viewModel by viewModels<HeroesViewModel> {
         HeroesViewModelFactory(
-            repository = HeroesRepositoryLocal(
-                webMapper = HeroesMapper()
-            )
+            repository = GlobalServiceLocator.provideHeroesRepository()
         )
     }
     private val viewBinding: FragmentHeroesStatsBinding by viewBinding(FragmentHeroesStatsBinding::bind)
@@ -35,7 +34,7 @@ class HeroesFragment : Fragment(R.layout.fragment_heroes_stats) {
                     oldItem: Hero,
                     newItem: Hero
                 ): Boolean {
-                    return oldItem.name == newItem.name
+                    return oldItem.id == newItem.id
                 }
 
                 override fun areContentsTheSame(

@@ -7,7 +7,22 @@
 
     <fragment
         android:id="@+id/notesFragment"
-        android:name="ru.rubik.dotastats.notes.NotesFragment"
+        android:name="ru.rubik.dotastats.notes.all.presentation.ui.NotesFragment"
         android:label="NotesFragment"
-        tools:layout="@layout/fragment_notes"/>
+        tools:layout="@layout/fragment_notes">
+        <action
+            android:id="@+id/action_notesFragment_to_editNoteFragment"
+            app:destination="@id/editNoteFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editNoteFragment"
+        android:name="ru.rubik.dotastats.notes.edit.presentation.ui.EditNoteFragment"
+        android:label="EditNoteFragment"
+        tools:layout="@layout/fragment_edit_note">
+        <argument
+            android:name="note"
+            app:argType="ru.rubik.dotastats.notes.all.domain.models.Note"
+            app:nullable="true" />
+    </fragment>
 </navigation>
