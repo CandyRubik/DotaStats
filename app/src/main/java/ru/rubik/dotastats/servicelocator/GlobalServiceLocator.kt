@@ -30,9 +30,9 @@ import ru.rubik.dotastats.heroes.data.api.HeroesApi
 import ru.rubik.dotastats.heroes.data.mappers.HeroesMapper
 import ru.rubik.dotastats.heroes.data.repository.HeroRepositoryImpl
 import ru.rubik.dotastats.heroes.domain.repository.HeroRepository
-import ru.rubik.dotastats.shared.nightMode.data.repository.NightModeLocalRepository
-import ru.rubik.dotastats.shared.nightMode.domain.repository.NightModeRepository
-import ru.rubik.dotastats.shared.nightMode.domain.usecase.NightModeUseCase
+import ru.rubik.dotastats.night_mode.repository.NightModeLocalRepository
+import ru.rubik.dotastats.night_mode.domain.repository.NightModeRepository
+import ru.rubik.dotastats.night_mode.domain.usecase.NightModeUseCase
 import ru.rubik.dotastats.shared.steamId.data.repository.SteamIdLocalRepository
 import ru.rubik.dotastats.shared.steamId.domain.repository.SteamIdRepository
 import ru.rubik.dotastats.shared.steamId.domain.usecase.SteamIdUseCase

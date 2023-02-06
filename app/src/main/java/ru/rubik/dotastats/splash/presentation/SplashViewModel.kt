@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
-import ru.rubik.dotastats.shared.nightMode.domain.usecase.NightModeUseCase
+import ru.rubik.dotastats.night_mode.domain.usecase.NightModeUseCase
 import ru.rubik.dotastats.shared.steamId.domain.usecase.SteamIdUseCase
 import ru.rubik.dotastats.splash.presentation.state.MainUiState
 

@@ -1,6 +1,6 @@
-package ru.rubik.dotastats.shared.nightMode.domain.usecase
+package ru.rubik.dotastats.night_mode.domain.usecase
 
-import ru.rubik.dotastats.shared.nightMode.domain.repository.NightModeRepository
+import ru.rubik.dotastats.night_mode.domain.repository.NightModeRepository
 
 class NightModeUseCase(
     private val repository: NightModeRepository

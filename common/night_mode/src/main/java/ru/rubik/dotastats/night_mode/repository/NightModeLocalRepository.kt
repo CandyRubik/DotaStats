@@ -1,14 +1,12 @@
-package ru.rubik.dotastats.shared.nightMode.data.repository
+package ru.rubik.dotastats.night_mode.repository
 
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
-import ru.rubik.dotastats.shared.nightMode.domain.repository.NightModeRepository
-import ru.rubik.dotastats.settings.presentation.ui.SettingsFragment
+import ru.rubik.dotastats.night_mode.domain.repository.NightModeRepository
 
 class NightModeLocalRepository(
     private val sharedPreferences: SharedPreferences,
-): NightModeRepository {
+) : NightModeRepository {
 
     override suspend fun saveMode(mode: Int) {
         sharedPreferences.edit(commit = true) {
@@ -21,6 +19,7 @@ class NightModeLocalRepository(
     }
 
     companion object {
+
         const val NIGHT_MODE_KEY = "NIGHT_MODE_KEY"
     }
 }

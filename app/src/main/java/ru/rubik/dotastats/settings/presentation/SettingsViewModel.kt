@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.rubik.dotastats.shared.nightMode.domain.usecase.NightModeUseCase
+import ru.rubik.dotastats.night_mode.domain.usecase.NightModeUseCase
 
 class SettingsViewModel(
     private val nightModeUseCase: NightModeUseCase,

@@ -1,4 +1,4 @@
-package ru.rubik.dotastats.shared.nightMode.domain.repository
+package ru.rubik.dotastats.night_mode.domain.repository
 
 interface NightModeRepository {
 

@@ -67,4 +67,5 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":core:design"))
     implementation(project(":common:heroes"))
+    implementation(project(":common:night_mode"))
 }
