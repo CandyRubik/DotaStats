@@ -11,12 +11,12 @@ import ru.rubik.dotastats.login.domain.usecases.ProfileUseCase
 import ru.rubik.dotastats.login.presentation.state.ContentState
 import ru.rubik.dotastats.login.presentation.state.LoginUiState
 import ru.rubik.dotastats.presentation.ProgressBaseViewModel
-import ru.rubik.dotastats.shared.steamId.domain.repository.SteamIdRepository
+import ru.rubik.dotastats.profile_id.domain.repository.ProfileIdRepository
 
 class LoginViewModel(
-    private val steamIdRepository: SteamIdRepository,
+    private val profileIdRepository: ProfileIdRepository,
     private val profileUseCase: ProfileUseCase,
-) : ru.rubik.dotastats.presentation.ProgressBaseViewModel() {
+) : ProgressBaseViewModel() {
 
     private val _loginUiState = MutableStateFlow(LoginUiState())
     val loginUiState = _loginUiState.asStateFlow()
@@ -45,7 +45,7 @@ class LoginViewModel(
                     )
                 }
             } else {
-                steamIdRepository.setSteamId(_loginUiState.value.login)
+                profileIdRepository.setProfileId(_loginUiState.value.login)
                 _loginUiState.update {
                     it.copy(
                         contentState = ContentState.NavigateToProfile

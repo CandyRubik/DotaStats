@@ -13,15 +13,14 @@ import ru.rubik.dotastats.notes.all.domain.repository.NotesRepository
 import ru.rubik.dotastats.notes.edit.presentation.state.ContentState
 import ru.rubik.dotastats.notes.edit.presentation.state.EditNoteUiState
 import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
-import ru.rubik.dotastats.shared.steamId.domain.usecase.SteamIdUseCase
 
 class EditNoteViewModel(
     note: Note?,
 ) : ViewModel() {
 
     private val repository: NotesRepository = GlobalServiceLocator.provideNotesRepository()
-    private val steamIdUseCase: SteamIdUseCase =
-        GlobalServiceLocator.provideSteamIdUseCase()
+    private val profileIdUseCase: ru.rubik.dotastats.profile_id.domain.usecase.ProfileIdUseCase =
+        GlobalServiceLocator.provideProfileIdUseCase()
 
     private val _uiState: MutableStateFlow<EditNoteUiState> = MutableStateFlow(
         EditNoteUiState(
@@ -64,14 +63,14 @@ class EditNoteViewModel(
 
     fun onSaveButtonClicked() {
         viewModelScope.launch(Dispatchers.IO) {
-            val steamId = requireNotNull(steamIdUseCase.getSteamId()) {
+            val profileId = requireNotNull(profileIdUseCase.getSteamId()) {
                 throw IllegalStateException("steamId can't be null because screen is not from login flow")
             }
 
             val idNewNote = repository.insertNote(
                 Note(
                     _uiState.value.note?.id ?: 0,
-                    steamId = steamId,
+                    profileId = profileId,
                     title = _uiState.value.title,
                     description = _uiState.value.description,
                 )

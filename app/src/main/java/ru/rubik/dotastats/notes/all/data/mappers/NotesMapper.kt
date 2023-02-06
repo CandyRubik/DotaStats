@@ -8,7 +8,7 @@ class NotesMapper {
     fun mapToNote(source: NoteDto): Note {
         return Note(
             id = source.id,
-            steamId = source.steamId,
+            profileId = source.steamId,
             title = source.title,
             description = source.description
         )
@@ -17,7 +17,7 @@ class NotesMapper {
     fun mapToNoteDto(source: Note): NoteDto {
         return NoteDto(
             id = source.id,
-            steamId = source.steamId,
+            steamId = source.profileId,
             title = source.title,
             description = source.description,
         )

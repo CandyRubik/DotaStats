@@ -68,4 +68,5 @@ dependencies {
     implementation(project(":core:design"))
     implementation(project(":common:heroes"))
     implementation(project(":common:night_mode"))
+    implementation(project(":common:profile_id"))
 }

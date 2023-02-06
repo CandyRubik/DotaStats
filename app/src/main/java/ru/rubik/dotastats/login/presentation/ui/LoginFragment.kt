@@ -15,14 +15,13 @@ import ru.rubik.dotastats.login.presentation.LoginViewModelFactory
 import ru.rubik.dotastats.login.presentation.state.ContentState
 import ru.rubik.dotastats.login.presentation.state.LoginUiState
 import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
-import ru.rubik.dotastats.presentation.ui.ProgressBaseFragment
 import kotlin.random.Random
 
 class LoginFragment : ru.rubik.dotastats.presentation.ui.ProgressBaseFragment(R.layout.fragment_login) {
 
     override val viewModel by viewModels<LoginViewModel> {
         LoginViewModelFactory(
-            steamIdRepository = GlobalServiceLocator.provideSteamIdRepository(),
+            profileIdRepository = GlobalServiceLocator.provideProfileIdRepository(),
             profileUseCase = GlobalServiceLocator.provideProfileUseCase(),
         )
     }

@@ -11,8 +11,8 @@ class ProfileRepositoryImpl(
     private val mapper: ProfileMapper,
 ): ProfileRepository {
 
-    override suspend fun getProfile(steamId: String): Profile? {
-        val response = webApi.getProfile(steamId.toLong()).checkErrors()
+    override suspend fun getProfile(profileId: String): Profile? {
+        val response = webApi.getProfile(profileId.toLong()).checkErrors()
         return mapper.mapToProfile(response)
     }
 }

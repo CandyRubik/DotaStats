@@ -7,6 +7,6 @@ import ru.rubik.dotastats.network.response.ApiResponse
 
 interface ProfileApi {
 
-    @GET("players/{steamId}")
-    suspend fun getProfile(@Path("steamId") id: Long): ApiResponse<ProfileResponse>
+    @GET("players/{profileId}")
+    suspend fun getProfile(@Path("profileId") id: Long): ApiResponse<ProfileResponse>
 }

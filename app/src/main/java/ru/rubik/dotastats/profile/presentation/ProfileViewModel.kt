@@ -14,7 +14,7 @@ import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
 
 class ProfileViewModel : ProgressBaseViewModel() {
 
-    private val steamIdUseCase = GlobalServiceLocator.provideSteamIdUseCase()
+    private val profileIdUseCase = GlobalServiceLocator.provideProfileIdUseCase()
     private val profileUseCase = GlobalServiceLocator.provideProfileUseCase()
     private val matchesUseCase = GlobalServiceLocator.provideMatchesUseCase()
     private val profileStatsRepository = GlobalServiceLocator.provideProfileStatsRepository()
@@ -30,7 +30,7 @@ class ProfileViewModel : ProgressBaseViewModel() {
     private fun fetchData() {
         viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
             enableLoading()
-            val steamId = requireNotNull(steamIdUseCase.getSteamId())
+            val steamId = requireNotNull(profileIdUseCase.getSteamId())
             val profileJob = async {
                 profileUseCase.getProfile(steamId)
             }
@@ -54,7 +54,7 @@ class ProfileViewModel : ProgressBaseViewModel() {
 
     fun onLogoutClocked() {
         viewModelScope.launch {
-            steamIdUseCase.setSteamId(null)
+            profileIdUseCase.setSteamId(null)
         }
     }
 }

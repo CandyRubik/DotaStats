@@ -9,14 +9,14 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import ru.rubik.dotastats.notes.all.domain.repository.NotesRepository
 import ru.rubik.dotastats.notes.all.presentation.state.NotesUiState
+import ru.rubik.dotastats.profile_id.domain.usecase.ProfileIdUseCase
 import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
-import ru.rubik.dotastats.shared.steamId.domain.usecase.SteamIdUseCase
 
 class NotesViewModel : ViewModel() {
 
     private val repository: NotesRepository = GlobalServiceLocator.provideNotesRepository()
-    private val steamIdUseCase: SteamIdUseCase =
-        GlobalServiceLocator.provideSteamIdUseCase()
+    private val profileIdUseCase: ProfileIdUseCase =
+        GlobalServiceLocator.provideProfileIdUseCase()
 
     private val _uiState: MutableStateFlow<NotesUiState> = MutableStateFlow(
         NotesUiState()
@@ -29,7 +29,7 @@ class NotesViewModel : ViewModel() {
 
     private fun collectNotesBySteamId() {
         viewModelScope.launch(Dispatchers.IO) {
-            val steamId = requireNotNull(steamIdUseCase.getSteamId()) {
+            val steamId = requireNotNull(profileIdUseCase.getSteamId()) {
                 throw IllegalStateException("steamId can't be null because screen is not from login flow")
             }
             repository.findNotesBySteamId(steamId).collect { notes ->

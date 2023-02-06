@@ -7,6 +7,6 @@ import ru.rubik.dotastats.profile.data.entities.MatchInfoRawResponse
 
 interface MatchesApi {
 
-    @GET("players/{steamId}/recentMatches")
-    suspend fun getRecentMatches(@Path("steamId") steamId: Long): ApiResponse<List<MatchInfoRawResponse>>
+    @GET("players/{profileId}/recentMatches")
+    suspend fun getRecentMatches(@Path("profileId") profileId: Long): ApiResponse<List<MatchInfoRawResponse>>
 }

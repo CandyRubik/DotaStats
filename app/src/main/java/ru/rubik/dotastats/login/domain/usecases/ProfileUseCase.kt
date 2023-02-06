@@ -8,6 +8,6 @@ class ProfileUseCase(
 ) {
 
     suspend fun getProfile(steamId: String): Profile? {
-        return profileRepository.getProfile(steamId = steamId)
+        return profileRepository.getProfile(profileId = steamId)
     }
 }

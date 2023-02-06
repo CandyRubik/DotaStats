@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Note(
     val id: Long,
-    val steamId: String,
+    val profileId: String,
     val title: String,
     val description: String,
 ) : Parcelable

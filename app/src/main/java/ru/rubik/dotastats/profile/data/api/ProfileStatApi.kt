@@ -7,6 +7,6 @@ import ru.rubik.dotastats.profile.data.entities.ProfileStatResponse
 
 interface ProfileStatApi {
 
-    @GET("players/{steamId}/wl")
-    suspend fun getProfileStats(@Path("steamId") id: Long): ApiResponse<ProfileStatResponse>
+    @GET("players/{profileId}/wl")
+    suspend fun getProfileStats(@Path("profileId") id: Long): ApiResponse<ProfileStatResponse>
 }

@@ -11,9 +11,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
 import ru.rubik.dotastats.night_mode.domain.usecase.NightModeUseCase
-import ru.rubik.dotastats.shared.steamId.domain.usecase.SteamIdUseCase
+import ru.rubik.dotastats.profile_id.domain.usecase.ProfileIdUseCase
+import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
 import ru.rubik.dotastats.splash.presentation.state.MainUiState
 
 class SplashViewModel : ViewModel() {
@@ -23,8 +23,8 @@ class SplashViewModel : ViewModel() {
     )
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
 
-    private val steamIdUseCase: SteamIdUseCase =
-        GlobalServiceLocator.provideSteamIdUseCase()
+    private val profileIdUseCase: ProfileIdUseCase =
+        GlobalServiceLocator.provideProfileIdUseCase()
 
     private val nightModeUseCase: NightModeUseCase = GlobalServiceLocator.provideNightModeUseCase()
 
@@ -37,7 +37,7 @@ class SplashViewModel : ViewModel() {
             withContext(Dispatchers.Main) {
                 AppCompatDelegate.setDefaultNightMode(nightModeUseCase.getNightMode())
             }
-            val steamId = steamIdUseCase.getSteamId()
+            val steamId = profileIdUseCase.getSteamId()
 
             delay(SPLASH_DELAY_IN_MS)
 

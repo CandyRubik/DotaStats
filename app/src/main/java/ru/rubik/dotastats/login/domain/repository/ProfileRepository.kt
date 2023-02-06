@@ -4,5 +4,5 @@ import ru.rubik.dotastats.login.domain.models.Profile
 
 interface ProfileRepository {
 
-    suspend fun getProfile(steamId: String): Profile?
+    suspend fun getProfile(profileId: String): Profile?
 }

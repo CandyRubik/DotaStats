@@ -4,7 +4,7 @@
     <string name="light_theme_button">Светлая</string>
     <string name="dark_theme_button">Темная</string>
     <string name="turbo_win_rate_text">Turbo win rate</string>
-    <string name="login_field_hint">Steam 32 ID</string>
+    <string name="login_field_hint">Dota profile ID</string>
     <string name="password_field_hint">Пароль</string>
     <string name="login_button_text">Войти</string>
     <string name="heroes_menu_title">Герои</string>

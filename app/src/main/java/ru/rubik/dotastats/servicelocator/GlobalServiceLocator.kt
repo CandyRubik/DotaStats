@@ -2,16 +2,23 @@ package ru.rubik.dotastats.servicelocator
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
+import ru.rubik.dotastats.heroes.data.api.HeroesApi
+import ru.rubik.dotastats.heroes.data.mappers.HeroesMapper
+import ru.rubik.dotastats.heroes.data.repository.HeroRepositoryImpl
 import ru.rubik.dotastats.heroes.detail.data.api.HeroesLoreApi
 import ru.rubik.dotastats.heroes.detail.data.repository.HeroesLoreRepositoryImpl
 import ru.rubik.dotastats.heroes.detail.domain.repository.HeroesLoreRepository
 import ru.rubik.dotastats.heroes.detail.domain.usecases.HeroesLoreUseCase
+import ru.rubik.dotastats.heroes.domain.repository.HeroRepository
 import ru.rubik.dotastats.login.data.api.ProfileApi
 import ru.rubik.dotastats.login.data.mappers.ProfileMapper
 import ru.rubik.dotastats.login.data.repository.ProfileRepositoryImpl
 import ru.rubik.dotastats.login.domain.repository.ProfileRepository
 import ru.rubik.dotastats.login.domain.usecases.ProfileUseCase
 import ru.rubik.dotastats.network.retrofit.RetrofitFactory
+import ru.rubik.dotastats.night_mode.domain.repository.NightModeRepository
+import ru.rubik.dotastats.night_mode.domain.usecase.NightModeUseCase
+import ru.rubik.dotastats.night_mode.repository.NightModeLocalRepository
 import ru.rubik.dotastats.notes.all.data.dao.NotesDao
 import ru.rubik.dotastats.notes.all.data.datasource.NotesDatabase
 import ru.rubik.dotastats.notes.all.data.mappers.NotesMapper
@@ -26,16 +33,9 @@ import ru.rubik.dotastats.profile.data.repository.ProfileStatsRepositoryImpl
 import ru.rubik.dotastats.profile.domain.repository.MatchesRepository
 import ru.rubik.dotastats.profile.domain.repository.ProfileStatsRepository
 import ru.rubik.dotastats.profile.domain.usecases.MatchesUseCase
-import ru.rubik.dotastats.heroes.data.api.HeroesApi
-import ru.rubik.dotastats.heroes.data.mappers.HeroesMapper
-import ru.rubik.dotastats.heroes.data.repository.HeroRepositoryImpl
-import ru.rubik.dotastats.heroes.domain.repository.HeroRepository
-import ru.rubik.dotastats.night_mode.repository.NightModeLocalRepository
-import ru.rubik.dotastats.night_mode.domain.repository.NightModeRepository
-import ru.rubik.dotastats.night_mode.domain.usecase.NightModeUseCase
-import ru.rubik.dotastats.shared.steamId.data.repository.SteamIdLocalRepository
-import ru.rubik.dotastats.shared.steamId.domain.repository.SteamIdRepository
-import ru.rubik.dotastats.shared.steamId.domain.usecase.SteamIdUseCase
+import ru.rubik.dotastats.profile_id.data.repository.ProfileIdLocalRepository
+import ru.rubik.dotastats.profile_id.domain.repository.ProfileIdRepository
+import ru.rubik.dotastats.profile_id.domain.usecase.ProfileIdUseCase
 
 object GlobalServiceLocator {
 
@@ -59,14 +59,14 @@ object GlobalServiceLocator {
         return NotesDatabase.getDatabase(context).noteDao()
     }
 
-    fun provideSteamIdUseCase(): SteamIdUseCase {
-        return SteamIdUseCase(
-            repository = provideSteamIdRepository()
+    fun provideProfileIdUseCase(): ProfileIdUseCase {
+        return ProfileIdUseCase(
+            repository = provideProfileIdRepository()
         )
     }
 
-    fun provideSteamIdRepository(): SteamIdRepository {
-        return SteamIdLocalRepository(
+    fun provideProfileIdRepository(): ProfileIdRepository {
+        return ProfileIdLocalRepository(
             sharedPreferences = context.getSharedPreferences(
                 CREDENTIALS_KEY, AppCompatActivity.MODE_PRIVATE
             )
