@@ -13,13 +13,12 @@ import coil.load
 import coil.transform.CircleCropTransformation
 import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.FragmentProfileBinding
+import ru.rubik.dotastats.presentation.ui.ProgressBaseFragment
 import ru.rubik.dotastats.profile.domain.models.MatchInfo
 import ru.rubik.dotastats.profile.presentation.ProfileViewModel
 import ru.rubik.dotastats.profile.presentation.state.ContentState
 import ru.rubik.dotastats.profile.presentation.state.ProfileUiState
 import ru.rubik.dotastats.profile.presentation.ui.adapter.RecentPlayedMatchAdapter
-import ru.rubik.dotastats.shared.heroes.domain.models.Hero
-import ru.rubik.dotastats.shared.presentation.ui.ProgressBaseFragment
 
 class ProfileFragment : ProgressBaseFragment(R.layout.fragment_profile) {
 

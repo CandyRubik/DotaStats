@@ -14,3 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "DotaStats"
 include(":app")
+include(":core:network")
+include(":core:presentation")
+include(":core:design")
+include(":common:heroes")

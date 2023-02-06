@@ -10,13 +10,13 @@ import kotlinx.coroutines.launch
 import ru.rubik.dotastats.login.domain.usecases.ProfileUseCase
 import ru.rubik.dotastats.login.presentation.state.ContentState
 import ru.rubik.dotastats.login.presentation.state.LoginUiState
-import ru.rubik.dotastats.shared.presentation.ProgressBaseViewModel
+import ru.rubik.dotastats.presentation.ProgressBaseViewModel
 import ru.rubik.dotastats.shared.steamId.domain.repository.SteamIdRepository
 
 class LoginViewModel(
     private val steamIdRepository: SteamIdRepository,
     private val profileUseCase: ProfileUseCase,
-) : ProgressBaseViewModel() {
+) : ru.rubik.dotastats.presentation.ProgressBaseViewModel() {
 
     private val _loginUiState = MutableStateFlow(LoginUiState())
     val loginUiState = _loginUiState.asStateFlow()

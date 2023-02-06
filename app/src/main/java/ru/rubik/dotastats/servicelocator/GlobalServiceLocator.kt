@@ -2,11 +2,16 @@ package ru.rubik.dotastats.servicelocator
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
+import ru.rubik.dotastats.heroes.detail.data.api.HeroesLoreApi
+import ru.rubik.dotastats.heroes.detail.data.repository.HeroesLoreRepositoryImpl
+import ru.rubik.dotastats.heroes.detail.domain.repository.HeroesLoreRepository
+import ru.rubik.dotastats.heroes.detail.domain.usecases.HeroesLoreUseCase
 import ru.rubik.dotastats.login.data.api.ProfileApi
 import ru.rubik.dotastats.login.data.mappers.ProfileMapper
 import ru.rubik.dotastats.login.data.repository.ProfileRepositoryImpl
 import ru.rubik.dotastats.login.domain.repository.ProfileRepository
 import ru.rubik.dotastats.login.domain.usecases.ProfileUseCase
+import ru.rubik.dotastats.network.retrofit.RetrofitFactory
 import ru.rubik.dotastats.notes.all.data.dao.NotesDao
 import ru.rubik.dotastats.notes.all.data.datasource.NotesDatabase
 import ru.rubik.dotastats.notes.all.data.mappers.NotesMapper
@@ -25,7 +30,6 @@ import ru.rubik.dotastats.shared.heroes.data.api.HeroesApi
 import ru.rubik.dotastats.shared.heroes.data.mappers.HeroesMapper
 import ru.rubik.dotastats.shared.heroes.data.repository.HeroRepositoryImpl
 import ru.rubik.dotastats.shared.heroes.domain.repository.HeroRepository
-import ru.rubik.dotastats.shared.network.retrofit.RetrofitFactory
 import ru.rubik.dotastats.shared.nightMode.data.repository.NightModeLocalRepository
 import ru.rubik.dotastats.shared.nightMode.domain.repository.NightModeRepository
 import ru.rubik.dotastats.shared.nightMode.domain.usecase.NightModeUseCase
@@ -122,6 +126,18 @@ object GlobalServiceLocator {
         return ProfileStatsRepositoryImpl(
             mapper = ProfileStatsMapper(),
             webApi = RetrofitFactory.get.create(ProfileStatApi::class.java)
+        )
+    }
+
+    fun provideHeroesLoreUseCase(): HeroesLoreUseCase {
+        return HeroesLoreUseCase(
+            repository = provideHeroesLoreRepository()
+        )
+    }
+
+    private fun provideHeroesLoreRepository(): HeroesLoreRepository {
+        return HeroesLoreRepositoryImpl(
+            webApi = RetrofitFactory.get.create(HeroesLoreApi::class.java)
         )
     }
 }

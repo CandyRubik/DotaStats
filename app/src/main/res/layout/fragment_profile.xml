@@ -78,7 +78,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/turbo_stat_text" />
 
-        <ru.rubik.dotastats.shared.WinLoseStatView
+        <ru.rubik.dotastats.design.WinLoseStatView
             android:id="@+id/win_lose_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
             android:layout_marginTop="16dp"

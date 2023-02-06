@@ -7,10 +7,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import ru.rubik.dotastats.presentation.ProgressBaseViewModel
 import ru.rubik.dotastats.profile.presentation.state.ContentState
 import ru.rubik.dotastats.profile.presentation.state.ProfileUiState
 import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
-import ru.rubik.dotastats.shared.presentation.ProgressBaseViewModel
 
 class ProfileViewModel : ProgressBaseViewModel() {
 
@@ -28,7 +28,7 @@ class ProfileViewModel : ProgressBaseViewModel() {
     }
 
     private fun fetchData() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
             enableLoading()
             val steamId = requireNotNull(steamIdUseCase.getSteamId())
             val profileJob = async {
