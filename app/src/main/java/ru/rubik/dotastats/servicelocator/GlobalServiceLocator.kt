@@ -26,10 +26,10 @@ import ru.rubik.dotastats.profile.data.repository.ProfileStatsRepositoryImpl
 import ru.rubik.dotastats.profile.domain.repository.MatchesRepository
 import ru.rubik.dotastats.profile.domain.repository.ProfileStatsRepository
 import ru.rubik.dotastats.profile.domain.usecases.MatchesUseCase
-import ru.rubik.dotastats.shared.heroes.data.api.HeroesApi
-import ru.rubik.dotastats.shared.heroes.data.mappers.HeroesMapper
-import ru.rubik.dotastats.shared.heroes.data.repository.HeroRepositoryImpl
-import ru.rubik.dotastats.shared.heroes.domain.repository.HeroRepository
+import ru.rubik.dotastats.heroes.data.api.HeroesApi
+import ru.rubik.dotastats.heroes.data.mappers.HeroesMapper
+import ru.rubik.dotastats.heroes.data.repository.HeroRepositoryImpl
+import ru.rubik.dotastats.heroes.domain.repository.HeroRepository
 import ru.rubik.dotastats.shared.nightMode.data.repository.NightModeLocalRepository
 import ru.rubik.dotastats.shared.nightMode.domain.repository.NightModeRepository
 import ru.rubik.dotastats.shared.nightMode.domain.usecase.NightModeUseCase

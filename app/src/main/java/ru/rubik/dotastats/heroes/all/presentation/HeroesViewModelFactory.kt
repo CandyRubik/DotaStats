@@ -2,7 +2,7 @@ package ru.rubik.dotastats.heroes.all.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import ru.rubik.dotastats.shared.heroes.domain.repository.HeroRepository
+import ru.rubik.dotastats.heroes.domain.repository.HeroRepository
 
 @Suppress("UNCHECKED_CAST")
 class HeroesViewModelFactory(private val repository: HeroRepository)

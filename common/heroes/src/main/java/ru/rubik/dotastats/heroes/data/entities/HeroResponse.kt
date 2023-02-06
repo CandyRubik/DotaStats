@@ -1,4 +1,4 @@
-package ru.rubik.dotastats.shared.heroes.data.entities
+package ru.rubik.dotastats.heroes.data.entities
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -14,7 +14,7 @@ import ru.rubik.dotastats.heroes.all.presentation.HeroesViewModelFactory
 import ru.rubik.dotastats.heroes.all.presentation.ui.adapter.HeroesAdapter
 import ru.rubik.dotastats.presentation.ui.ProgressBaseFragment
 import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
-import ru.rubik.dotastats.shared.heroes.domain.models.Hero
+import ru.rubik.dotastats.heroes.domain.models.Hero
 
 class HeroesFragment : ProgressBaseFragment(R.layout.fragment_heroes_stats) {
 

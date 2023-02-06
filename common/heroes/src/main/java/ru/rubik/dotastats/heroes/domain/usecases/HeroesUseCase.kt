@@ -1,7 +1,7 @@
-package ru.rubik.dotastats.shared.heroes.domain.usecases
+package ru.rubik.dotastats.heroes.domain.usecases
 
-import ru.rubik.dotastats.shared.heroes.domain.models.Hero
-import ru.rubik.dotastats.shared.heroes.domain.repository.HeroRepository
+import ru.rubik.dotastats.heroes.domain.models.Hero
+import ru.rubik.dotastats.heroes.domain.repository.HeroRepository
 
 class HeroesUseCase(
     private val heroRepository: HeroRepository,

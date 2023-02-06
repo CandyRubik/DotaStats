@@ -2,7 +2,7 @@ package ru.rubik.dotastats.profile.domain.usecases
 
 import ru.rubik.dotastats.profile.domain.models.MatchInfo
 import ru.rubik.dotastats.profile.domain.repository.MatchesRepository
-import ru.rubik.dotastats.shared.heroes.domain.repository.HeroRepository
+import ru.rubik.dotastats.heroes.domain.repository.HeroRepository
 
 class MatchesUseCase(
     private val matchesRepository: MatchesRepository,

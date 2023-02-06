@@ -1,4 +1,4 @@
-package ru.rubik.dotastats.shared.heroes.domain.models
+package ru.rubik.dotastats.heroes.domain.models
 
 data class Hero(
     val id: Long,

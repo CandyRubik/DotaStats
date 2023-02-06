@@ -66,4 +66,5 @@ dependencies {
     implementation(project(":core:presentation"))
     implementation(project(":core:network"))
     implementation(project(":core:design"))
+    implementation(project(":common:heroes"))
 }
