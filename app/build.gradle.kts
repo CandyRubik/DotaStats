@@ -66,7 +66,10 @@ dependencies {
     implementation(project(":core:presentation"))
     implementation(project(":core:network"))
     implementation(project(":core:design"))
-    implementation(project(":common:heroes"))
-    implementation(project(":common:night_mode"))
-    implementation(project(":common:profile_id"))
+    implementation(project(":common:heroes:heroes-api"))
+    implementation(project(":common:heroes:heroes-impl"))
+    implementation(project(":common:night-mode:night-mode-impl"))
+    implementation(project(":common:night-mode:night-mode-api"))
+    implementation(project(":common:profile-id:profile-id-impl"))
+    implementation(project(":common:profile-id:profile-id-api"))
 }

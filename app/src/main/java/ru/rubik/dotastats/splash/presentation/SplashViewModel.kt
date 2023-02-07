@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.rubik.dotastats.night_mode.domain.usecase.NightModeUseCase
+import ru.rubik.dotastats.night_mode_api.domain.usecase.NightModeUseCase
 import ru.rubik.dotastats.profile_id.domain.usecase.ProfileIdUseCase
 import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
 import ru.rubik.dotastats.splash.presentation.state.MainUiState

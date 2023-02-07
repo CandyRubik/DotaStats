@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import ru.rubik.dotastats.presentation.ProgressBaseViewModel
-import ru.rubik.dotastats.heroes.domain.models.Hero
-import ru.rubik.dotastats.heroes.domain.repository.HeroRepository
+import ru.rubik.dotastats.heroes_api.domain.models.Hero
+import ru.rubik.dotastats.heroes_api.domain.repository.HeroRepository
 
 class HeroesViewModel(
     private val repository: HeroRepository,

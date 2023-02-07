@@ -5,7 +5,7 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import ru.rubik.dotastats.design.R
 import ru.rubik.dotastats.databinding.ItemHeroStatBinding
-import ru.rubik.dotastats.heroes.domain.models.Hero
+import ru.rubik.dotastats.heroes_api.domain.models.Hero
 
 class HeroViewHolder(private val binding: ItemHeroStatBinding) :
     RecyclerView.ViewHolder(binding.root) {

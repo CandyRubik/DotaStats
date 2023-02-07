@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import ru.rubik.dotastats.R
 import ru.rubik.dotastats.databinding.ItemHeroStatBinding
-import ru.rubik.dotastats.heroes.domain.models.Hero
+import ru.rubik.dotastats.heroes_api.domain.models.Hero
 
 class HeroesAdapter(
     private val onItemClickListener: (Hero) -> Unit,
