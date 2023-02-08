@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import ru.rubik.dotastats.notes.all.domain.repository.NotesRepository
 import ru.rubik.dotastats.notes.all.presentation.state.NotesUiState
-import ru.rubik.dotastats.profile_id.domain.usecase.ProfileIdUseCase
+import ru.rubik.dotastats.profile_id_api.domain.usecase.ProfileIdUseCase
 import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
 
 class NotesViewModel : ViewModel() {

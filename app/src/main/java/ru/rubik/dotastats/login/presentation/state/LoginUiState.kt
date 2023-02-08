@@ -1,6 +1,5 @@
 package ru.rubik.dotastats.login.presentation.state
 
-import ru.rubik.dotastats.login.domain.models.Profile
 
 data class LoginUiState(
     val login: String = "",

@@ -7,13 +7,14 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import ru.rubik.dotastats.login.domain.usecases.ProfileUseCase
 import ru.rubik.dotastats.login.presentation.state.ContentState
 import ru.rubik.dotastats.login.presentation.state.LoginUiState
 import ru.rubik.dotastats.presentation.ProgressBaseViewModel
-import ru.rubik.dotastats.profile_id.domain.repository.ProfileIdRepository
+import ru.rubik.dotastats.profile_api.domain.usecases.ProfileUseCase
+import ru.rubik.dotastats.profile_id_api.domain.repository.ProfileIdRepository
+import javax.inject.Inject
 
-class LoginViewModel(
+class LoginViewModel @Inject constructor(
     private val profileIdRepository: ProfileIdRepository,
     private val profileUseCase: ProfileUseCase,
 ) : ProgressBaseViewModel() {

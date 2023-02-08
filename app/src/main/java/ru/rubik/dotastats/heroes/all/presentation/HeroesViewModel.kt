@@ -8,8 +8,9 @@ import kotlinx.coroutines.launch
 import ru.rubik.dotastats.presentation.ProgressBaseViewModel
 import ru.rubik.dotastats.heroes_api.domain.models.Hero
 import ru.rubik.dotastats.heroes_api.domain.repository.HeroRepository
+import javax.inject.Inject
 
-class HeroesViewModel(
+class HeroesViewModel (
     private val repository: HeroRepository,
 ) : ProgressBaseViewModel() {
 

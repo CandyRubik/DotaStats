@@ -5,8 +5,9 @@ import ru.rubik.dotastats.profile.data.api.MatchesApi
 import ru.rubik.dotastats.profile.data.mappers.MatchesMapper
 import ru.rubik.dotastats.profile.domain.models.MatchInfoRaw
 import ru.rubik.dotastats.profile.domain.repository.MatchesRepository
+import javax.inject.Inject
 
-class MatchesRepositoryImpl(
+class MatchesRepositoryImpl @Inject constructor(
     private val mapper: MatchesMapper,
     private val webApi: MatchesApi,
 ) : MatchesRepository {

@@ -1,5 +1,6 @@
 package ru.rubik.dotastats.login.presentation.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -9,24 +10,32 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.rubik.dotastats.R
+import ru.rubik.dotastats.appComponent
 import ru.rubik.dotastats.databinding.FragmentLoginBinding
+import ru.rubik.dotastats.di.MultiViewModelFactory
+import ru.rubik.dotastats.login.di.DaggerLoginComponent
 import ru.rubik.dotastats.login.presentation.LoginViewModel
-import ru.rubik.dotastats.login.presentation.LoginViewModelFactory
 import ru.rubik.dotastats.login.presentation.state.ContentState
 import ru.rubik.dotastats.login.presentation.state.LoginUiState
-import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
+import ru.rubik.dotastats.presentation.ui.ProgressBaseFragment
+import javax.inject.Inject
 import kotlin.random.Random
 
-class LoginFragment : ru.rubik.dotastats.presentation.ui.ProgressBaseFragment(R.layout.fragment_login) {
+class LoginFragment : ProgressBaseFragment(R.layout.fragment_login) {
 
-    override val viewModel by viewModels<LoginViewModel> {
-        LoginViewModelFactory(
-            profileIdRepository = GlobalServiceLocator.provideProfileIdRepository(),
-            profileUseCase = GlobalServiceLocator.provideProfileUseCase(),
-        )
-    }
+    @Inject
+    lateinit var viewModelFactory: MultiViewModelFactory
+
+    override val viewModel: LoginViewModel by viewModels { viewModelFactory }
 
     private val binding: FragmentLoginBinding by viewBinding(FragmentLoginBinding::bind)
+
+    override fun onAttach(context: Context) {
+        DaggerLoginComponent.factory().create(
+            context.appComponent
+        ).inject(this)
+        super.onAttach(context)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

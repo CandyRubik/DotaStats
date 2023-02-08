@@ -12,6 +12,7 @@ import ru.rubik.dotastats.notes.all.domain.models.Note
 import ru.rubik.dotastats.notes.all.domain.repository.NotesRepository
 import ru.rubik.dotastats.notes.edit.presentation.state.ContentState
 import ru.rubik.dotastats.notes.edit.presentation.state.EditNoteUiState
+import ru.rubik.dotastats.profile_id_api.domain.usecase.ProfileIdUseCase
 import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
 
 class EditNoteViewModel(
@@ -19,7 +20,7 @@ class EditNoteViewModel(
 ) : ViewModel() {
 
     private val repository: NotesRepository = GlobalServiceLocator.provideNotesRepository()
-    private val profileIdUseCase: ru.rubik.dotastats.profile_id.domain.usecase.ProfileIdUseCase =
+    private val profileIdUseCase: ProfileIdUseCase =
         GlobalServiceLocator.provideProfileIdUseCase()
 
     private val _uiState: MutableStateFlow<EditNoteUiState> = MutableStateFlow(

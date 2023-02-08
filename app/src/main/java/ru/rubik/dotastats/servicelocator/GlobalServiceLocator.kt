@@ -10,11 +10,6 @@ import ru.rubik.dotastats.heroes.detail.data.repository.HeroesLoreRepositoryImpl
 import ru.rubik.dotastats.heroes.detail.domain.repository.HeroesLoreRepository
 import ru.rubik.dotastats.heroes.detail.domain.usecases.HeroesLoreUseCase
 import ru.rubik.dotastats.heroes_api.domain.repository.HeroRepository
-import ru.rubik.dotastats.login.data.api.ProfileApi
-import ru.rubik.dotastats.login.data.mappers.ProfileMapper
-import ru.rubik.dotastats.login.data.repository.ProfileRepositoryImpl
-import ru.rubik.dotastats.login.domain.repository.ProfileRepository
-import ru.rubik.dotastats.login.domain.usecases.ProfileUseCase
 import ru.rubik.dotastats.network.retrofit.RetrofitFactory
 import ru.rubik.dotastats.night_mode.repository.NightModeLocalRepository
 import ru.rubik.dotastats.night_mode_api.domain.repository.NightModeRepository
@@ -33,16 +28,18 @@ import ru.rubik.dotastats.profile.data.repository.ProfileStatsRepositoryImpl
 import ru.rubik.dotastats.profile.domain.repository.MatchesRepository
 import ru.rubik.dotastats.profile.domain.repository.ProfileStatsRepository
 import ru.rubik.dotastats.profile.domain.usecases.MatchesUseCase
+import ru.rubik.dotastats.profile_api.domain.repository.ProfileRepository
+import ru.rubik.dotastats.profile_api.domain.usecases.ProfileUseCase
 import ru.rubik.dotastats.profile_id.data.repository.ProfileIdLocalRepository
-import ru.rubik.dotastats.profile_id.domain.repository.ProfileIdRepository
-import ru.rubik.dotastats.profile_id.domain.usecase.ProfileIdUseCase
+import ru.rubik.dotastats.profile_id_api.domain.repository.ProfileIdRepository
+import ru.rubik.dotastats.profile_id_api.domain.usecase.ProfileIdUseCase
+import ru.rubik.dotastats.profile_impl.data.api.ProfileApi
+import ru.rubik.dotastats.profile_impl.data.mappers.ProfileMapper
+import ru.rubik.dotastats.profile_impl.data.repository.ProfileRepositoryImpl
 
 object GlobalServiceLocator {
 
     private lateinit var context: Context
-
-    private const val CREDENTIALS_KEY = "CREDENTIALS_KEY"
-    private const val THEME_KEY = "THEME_KEY"
 
     fun initializeContext(applicationContext: Context) {
         this.context = applicationContext
@@ -67,9 +64,7 @@ object GlobalServiceLocator {
 
     fun provideProfileIdRepository(): ProfileIdRepository {
         return ProfileIdLocalRepository(
-            sharedPreferences = context.getSharedPreferences(
-                CREDENTIALS_KEY, AppCompatActivity.MODE_PRIVATE
-            )
+            context
         )
     }
 
@@ -81,10 +76,7 @@ object GlobalServiceLocator {
 
     fun provideNightModeRepository(): NightModeRepository {
         return NightModeLocalRepository(
-            sharedPreferences = context.getSharedPreferences(
-                THEME_KEY,
-                AppCompatActivity.MODE_PRIVATE
-            )
+            context
         )
     }
 

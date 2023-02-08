@@ -5,8 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.rubik.dotastats.night_mode_api.domain.usecase.NightModeUseCase
+import javax.inject.Inject
 
-class SettingsViewModel(
+class SettingsViewModel @Inject constructor(
     private val nightModeUseCase: NightModeUseCase,
 ): ViewModel() {
 

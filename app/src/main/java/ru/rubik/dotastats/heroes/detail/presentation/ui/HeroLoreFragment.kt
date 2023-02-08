@@ -15,7 +15,7 @@ import ru.rubik.dotastats.heroes.detail.presentation.state.ContentState
 import ru.rubik.dotastats.heroes.detail.presentation.state.HeroLoreUiState
 import ru.rubik.dotastats.presentation.ui.ProgressBaseFragment
 
-class HeroLoreFragment : ru.rubik.dotastats.presentation.ui.ProgressBaseFragment(R.layout.fragment_hero_lore) {
+class HeroLoreFragment : ProgressBaseFragment(R.layout.fragment_hero_lore) {
 
     private val navArgs: HeroLoreFragmentArgs by navArgs()
 

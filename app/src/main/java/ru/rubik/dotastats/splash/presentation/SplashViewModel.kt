@@ -12,21 +12,19 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.rubik.dotastats.night_mode_api.domain.usecase.NightModeUseCase
-import ru.rubik.dotastats.profile_id.domain.usecase.ProfileIdUseCase
-import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
+import ru.rubik.dotastats.profile_id_api.domain.usecase.ProfileIdUseCase
 import ru.rubik.dotastats.splash.presentation.state.MainUiState
+import javax.inject.Inject
 
-class SplashViewModel : ViewModel() {
+class SplashViewModel @Inject constructor(
+    private val profileIdUseCase: ProfileIdUseCase,
+    private val nightModeUseCase: NightModeUseCase,
+) : ViewModel() {
 
     private val _uiState: MutableStateFlow<MainUiState> = MutableStateFlow(
         MainUiState()
     )
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
-
-    private val profileIdUseCase: ProfileIdUseCase =
-        GlobalServiceLocator.provideProfileIdUseCase()
-
-    private val nightModeUseCase: NightModeUseCase = GlobalServiceLocator.provideNightModeUseCase()
 
     init {
         fetchData()

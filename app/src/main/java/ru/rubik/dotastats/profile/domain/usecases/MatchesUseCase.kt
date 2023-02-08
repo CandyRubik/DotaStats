@@ -3,8 +3,9 @@ package ru.rubik.dotastats.profile.domain.usecases
 import ru.rubik.dotastats.profile.domain.models.MatchInfo
 import ru.rubik.dotastats.profile.domain.repository.MatchesRepository
 import ru.rubik.dotastats.heroes_api.domain.repository.HeroRepository
+import javax.inject.Inject
 
-class MatchesUseCase(
+class MatchesUseCase @Inject constructor(
     private val matchesRepository: MatchesRepository,
     private val heroesRepository: HeroRepository,
 ) {

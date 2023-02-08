@@ -5,8 +5,9 @@ import ru.rubik.dotastats.heroes.data.api.HeroesApi
 import ru.rubik.dotastats.heroes.data.mappers.HeroesMapper
 import ru.rubik.dotastats.heroes_api.domain.models.Hero
 import ru.rubik.dotastats.heroes_api.domain.repository.HeroRepository
+import javax.inject.Inject
 
-class HeroRepositoryImpl(
+class HeroRepositoryImpl @Inject constructor(
     private val webApi: HeroesApi,
     private val mapper: HeroesMapper,
 ) : HeroRepository {

@@ -61,7 +61,7 @@ dependencies {
 
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
 
     implementation(project(":core:presentation"))
     implementation(project(":core:network"))
@@ -72,4 +72,9 @@ dependencies {
     implementation(project(":common:night-mode:night-mode-api"))
     implementation(project(":common:profile-id:profile-id-impl"))
     implementation(project(":common:profile-id:profile-id-api"))
+    implementation(project(":common:profile:profile-api"))
+    implementation(project(":common:profile:profile-impl"))
+
+    implementation("com.google.dagger:dagger:2.44.2")
+    kapt("com.google.dagger:dagger-compiler:2.44.2")
 }

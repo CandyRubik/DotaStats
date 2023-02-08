@@ -1,8 +1,8 @@
 package ru.rubik.dotastats.profile.presentation.state
 
-import ru.rubik.dotastats.login.domain.models.Profile
 import ru.rubik.dotastats.profile.domain.models.MatchInfo
 import ru.rubik.dotastats.profile.domain.models.ProfileStats
+import ru.rubik.dotastats.profile_api.domain.models.Profile
 
 data class ProfileUiState(
     val profile: Profile? = null,

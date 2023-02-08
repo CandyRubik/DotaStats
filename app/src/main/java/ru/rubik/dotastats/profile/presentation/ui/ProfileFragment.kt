@@ -1,5 +1,6 @@
 package ru.rubik.dotastats.profile.presentation.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
@@ -12,19 +13,26 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import coil.transform.CircleCropTransformation
 import ru.rubik.dotastats.R
+import ru.rubik.dotastats.appComponent
 import ru.rubik.dotastats.databinding.FragmentProfileBinding
+import ru.rubik.dotastats.di.MultiViewModelFactory
 import ru.rubik.dotastats.presentation.ui.ProgressBaseFragment
+import ru.rubik.dotastats.profile.di.DaggerProfileComponent
 import ru.rubik.dotastats.profile.domain.models.MatchInfo
 import ru.rubik.dotastats.profile.presentation.ProfileViewModel
 import ru.rubik.dotastats.profile.presentation.state.ContentState
 import ru.rubik.dotastats.profile.presentation.state.ProfileUiState
 import ru.rubik.dotastats.profile.presentation.ui.adapter.RecentPlayedMatchAdapter
+import javax.inject.Inject
 
 class ProfileFragment : ProgressBaseFragment(R.layout.fragment_profile) {
 
-    private val binding: FragmentProfileBinding by viewBinding(FragmentProfileBinding::bind)
+    @Inject
+    lateinit var viewModelFactory: MultiViewModelFactory
 
-    override val viewModel: ProfileViewModel by viewModels()
+    override val viewModel: ProfileViewModel by viewModels { viewModelFactory }
+
+    private val binding: FragmentProfileBinding by viewBinding(FragmentProfileBinding::bind)
 
     private val adapter by lazy {
         RecentPlayedMatchAdapter(
@@ -45,6 +53,13 @@ class ProfileFragment : ProgressBaseFragment(R.layout.fragment_profile) {
                 }
             }
         )
+    }
+
+    override fun onAttach(context: Context) {
+        DaggerProfileComponent.factory()
+            .create(context.appComponent)
+            .inject(this)
+        super.onAttach(context)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

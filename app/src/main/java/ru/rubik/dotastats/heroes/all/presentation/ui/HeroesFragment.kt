@@ -23,6 +23,7 @@ class HeroesFragment : ProgressBaseFragment(R.layout.fragment_heroes_stats) {
             repository = GlobalServiceLocator.provideHeroesRepository()
         )
     }
+
     private val viewBinding: FragmentHeroesStatsBinding by viewBinding(FragmentHeroesStatsBinding::bind)
 
     private val adapter by lazy {

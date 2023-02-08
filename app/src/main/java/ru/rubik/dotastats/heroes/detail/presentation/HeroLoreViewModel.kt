@@ -8,12 +8,12 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import ru.rubik.dotastats.heroes.detail.presentation.state.ContentState
 import ru.rubik.dotastats.heroes.detail.presentation.state.HeroLoreUiState
-import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
 import ru.rubik.dotastats.presentation.ProgressBaseViewModel
+import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
 
 class HeroLoreViewModel(
     private val name: String,
-): ru.rubik.dotastats.presentation.ProgressBaseViewModel()  {
+) : ProgressBaseViewModel() {
 
     private val heroesLoreUseCase = GlobalServiceLocator.provideHeroesLoreUseCase()
 
