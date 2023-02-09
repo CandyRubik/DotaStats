@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import ru.rubik.dotastats.di.AppComponent
 import ru.rubik.dotastats.di.DaggerAppComponent
-import ru.rubik.dotastats.servicelocator.GlobalServiceLocator
 
 class App : Application() {
 
@@ -15,10 +14,7 @@ class App : Application() {
         super.onCreate()
 
         component = DaggerAppComponent.factory().create(this)
-
-        GlobalServiceLocator.initializeContext(this)
     }
-
 }
 
 val Context.appComponent: AppComponent
