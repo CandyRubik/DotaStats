@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_network_error_title">Похоже у вас выключен интернет и сервера не видят вас, чтобы продолжить включите интернет на устройстве</string>
+    <string name="dialog_error_positive_button">Хорошо</string>
+    <string name="dialog_other_error_title">Разработчики уже знают о проблеме и активно думают о решении, остается только ждать обновлений...</string>
+</resources>

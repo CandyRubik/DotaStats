@@ -42,7 +42,7 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.0")
-    implementation("com.google.android.material:material:1.7.0")
+    implementation("com.google.android.material:material:1.8.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.fragment:fragment-ktx:1.5.5")
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
@@ -56,12 +56,37 @@ dependencies {
     implementation("androidx.room:room-runtime:2.5.0")
     kapt("androidx.room:room-compiler:2.5.0")
 
-    // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
-    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
-
     //Coil
     implementation("io.coil-kt:coil:2.2.2")
+
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+
+    implementation(project(":core:presentation"))
+    implementation(project(":core:network"))
+    implementation(project(":core:di"))
+    implementation(project(":core:design"))
+    implementation(project(":common:heroes:heroes-api"))
+    implementation(project(":common:heroes:heroes-impl"))
+    implementation(project(":common:night-mode:night-mode-impl"))
+    implementation(project(":common:night-mode:night-mode-api"))
+    implementation(project(":common:profile-id:profile-id-impl"))
+    implementation(project(":common:profile-id:profile-id-api"))
+    implementation(project(":common:profile:profile-api"))
+    implementation(project(":common:profile:profile-impl"))
+    implementation(project(":common:notes:notes-api"))
+    implementation(project(":common:notes:notes-impl"))
+    implementation(project(":feature:splash"))
+    implementation(project(":feature:login"))
+    implementation(project(":feature:profile"))
+    implementation(project(":feature:settings"))
+    implementation(project(":feature:heroes:all"))
+    implementation(project(":feature:heroes:details"))
+    implementation(project(":feature:notes:all"))
+    implementation(project(":feature:notes:details"))
+    implementation(project(":feature:main"))
+
+    implementation("com.google.dagger:dagger:2.44.2")
+    kapt("com.google.dagger:dagger-compiler:2.44.2")
 }

@@ -17,12 +17,12 @@
 
     <fragment
         android:id="@+id/editNoteFragment"
-        android:name="ru.rubik.dotastats.notes.edit.presentation.ui.EditNoteFragment"
+        android:name="ru.rubik.dotastats.details.presentation.ui.EditNoteFragment"
         android:label="EditNoteFragment"
         tools:layout="@layout/fragment_edit_note">
         <argument
             android:name="note"
-            app:argType="ru.rubik.dotastats.notes.all.domain.models.Note"
+            app:argType="ru.rubik.dotastats.notes_api.domain.models.Note"
             app:nullable="true" />
     </fragment>
 </navigation>

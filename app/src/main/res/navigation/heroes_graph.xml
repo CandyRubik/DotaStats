@@ -7,7 +7,20 @@
 
     <fragment
         android:id="@+id/heroesStatsFragment"
-        android:name="ru.rubik.dotastats.heroes.presentation.ui.HeroesFragment"
+        android:name="ru.rubik.dotastats.heroes.all.presentation.ui.HeroesFragment"
         android:label="HeroesStatsFragment"
-        tools:layout="@layout/fragment_heroes_stats" />
+        tools:layout="@layout/fragment_heroes">
+        <action
+            android:id="@+id/action_heroesStatsFragment_to_heroLoreFragment"
+            app:destination="@id/heroLoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heroLoreFragment"
+        android:name="ru.rubik.dotastats.details.presentation.ui.HeroLoreFragment"
+        android:label="HeroLoreFragment"
+        tools:layout="@layout/fragment_hero_lore">
+        <argument
+            android:name="heroName"
+            app:argType="string" />
+    </fragment>
 </navigation>
