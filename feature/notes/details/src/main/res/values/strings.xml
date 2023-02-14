@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="note_title_hint">Название</string>
+    <string name="add_note_button_text">Добавить</string>
+    <string name="remove_button_text">Удалить</string>
+    <string name="note_description_hint">Описание</string>
+</resources>

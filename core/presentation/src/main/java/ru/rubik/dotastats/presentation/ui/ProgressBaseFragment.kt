@@ -9,9 +9,9 @@ import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import ru.rubik.dotastats.presentation.ProgressBaseViewModel
 import ru.rubik.dotastats.presentation.R
 import ru.rubik.dotastats.presentation.errors.DialogErrors
+import ru.rubik.dotastats.presentation.vm.ProgressBaseViewModel
 
 abstract class ProgressBaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId) {
 
@@ -103,6 +103,7 @@ abstract class ProgressBaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             setCancelable(false)
             show()
+            window?.setLayout(200, 200)
         }
     }
 

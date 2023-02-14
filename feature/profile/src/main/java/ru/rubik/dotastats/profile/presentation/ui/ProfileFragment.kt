@@ -72,8 +72,31 @@ class ProfileFragment : ProgressBaseFragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpListeners()
+        setUpObservers()
+        setUpAdapter()
+    }
+
+    private fun setUpAdapter() {
+        binding.recycler.setHasFixedSize(false)
+        binding.recycler.isNestedScrollingEnabled = false
+        binding.recycler.adapter = adapter
+    }
+
+    private fun setUpObservers() {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.profileUiState.collect(this@ProfileFragment::obtainUiState)
+        }
+    }
+
+    private fun setUpListeners() {
         binding.settingsButton.setOnClickListener {
             findNavController().navigate(navigation.actionProfileFragmentToSettingsFragment)
+        }
+
+        binding.swipeToRefresh.setOnRefreshListener {
+            viewModel.fetchData()
+            binding.swipeToRefresh.isRefreshing = false
         }
 
         binding.logoutButton.setOnClickListener {
@@ -81,11 +104,6 @@ class ProfileFragment : ProgressBaseFragment(R.layout.fragment_profile) {
             requireActivity().findNavController(navigation.activityNavHost)
                 .navigate(navigation.actionMainFragmentToAuthGraph)
         }
-
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.profileUiState.collect(this@ProfileFragment::obtainUiState)
-        }
-        binding.recycler.adapter = adapter
     }
 
     private fun obtainUiState(state: ProfileUiState) {

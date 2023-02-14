@@ -73,7 +73,7 @@ class LoginFragment : ProgressBaseFragment(R.layout.fragment_login) {
             ContentState.ShowErrorToast -> {
                 Toast.makeText(
                     requireContext(),
-                    "Incorrect steam id",
+                    "Incorrect dota id",
                     Toast.LENGTH_SHORT
                 ).show()
             }

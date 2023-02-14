@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="profile_winrate_text">Winrate: %1$d</string>
+
+    <string name="recent_played_text">Recent played</string>
+    <string name="turbo_stat_text">Turbo stat</string>
+    <string name="hero_column_title">Hero</string>
+    <string name="kills_column_title">Kills</string>
+    <string name="death_column_title">Death</string>
+    <string name="assists_column_title">Assists</string>
+    <string name="xpm_column_title">XPM</string>
+    <string name="login_field_hint">Dota profile ID</string>
 </resources>

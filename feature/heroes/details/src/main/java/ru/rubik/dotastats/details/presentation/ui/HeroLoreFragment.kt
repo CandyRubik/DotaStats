@@ -45,6 +45,10 @@ class HeroLoreFragment : ProgressBaseFragment(R.layout.fragment_hero_lore) {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.heroLoreUiState.collect(this@HeroLoreFragment::obtainUiState)
         }
+        viewBinding.swipeToRefresh.setOnRefreshListener {
+            viewModel.fetchData()
+            viewBinding.swipeToRefresh.isRefreshing = false
+        }
     }
 
     private fun obtainUiState(state: HeroLoreUiState) {

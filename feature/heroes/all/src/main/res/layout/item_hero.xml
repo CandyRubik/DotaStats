@@ -16,9 +16,10 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            tools:src="@tools:sample/avatars" />
+            android:layout_width="256dp"
+            android:layout_height="128dp"
+            tools:src="@drawable/loading_animation"
+            android:scaleType="centerCrop" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/name"
@@ -27,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:textAlignment="center"
+            android:lines="2"
             tools:text="Anti-Mage" />
     </LinearLayout>
 

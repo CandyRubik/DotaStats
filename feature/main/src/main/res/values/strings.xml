@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="heroes_menu_title">Герои</string>
+    <string name="profile_menu_title">Профиль</string>
+    <string name="notes_menu_title">Заметки</string>
+</resources>

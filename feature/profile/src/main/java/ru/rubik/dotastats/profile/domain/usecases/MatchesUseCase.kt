@@ -9,20 +9,29 @@ class MatchesUseCase @Inject constructor(
     private val matchesRepository: MatchesRepository,
     private val heroesRepository: HeroRepository,
 ) {
+
     suspend fun getRecentMatchesInfo(profileId: String): List<MatchInfo> {
         val matches = matchesRepository.getRecentMatches(profileId)
-        val heroes = heroesRepository.getHeroes().sortedBy {
-            it.id
-        }.toMutableList()
+        val heroes = heroesRepository.getHeroes()
         return matches.map {
             MatchInfo(
                 id = it.id,
-                heroUrl = heroes[(it.heroId - 1).toInt()].imageUrl,
+                heroUrl = try {
+                    heroes.first { hero -> hero.id == it.heroId }.imageUrl
+                } catch (e: NoSuchElementException) {
+                    DEFAULT_HERO_IMAGE_URL
+                }, // api returns heroes list less then heroes available
                 kills = it.kills,
                 deaths = it.deaths,
                 assists = it.assists,
                 xpPerMinute = it.xpPerMinute,
             )
         }
+    }
+
+    companion object {
+
+        const val DEFAULT_HERO_IMAGE_URL =
+            "https://icon-library.com/images/steam-question-mark-icon/steam-question-mark-icon-5.jpg"
     }
 }

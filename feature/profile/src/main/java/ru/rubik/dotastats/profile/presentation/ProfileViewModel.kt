@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import ru.rubik.dotastats.presentation.ProgressBaseViewModel
+import ru.rubik.dotastats.presentation.vm.ProgressBaseViewModel
 import ru.rubik.dotastats.profile.domain.repository.ProfileStatsRepository
 import ru.rubik.dotastats.profile.domain.usecases.MatchesUseCase
 import ru.rubik.dotastats.profile.presentation.state.ContentState
@@ -31,7 +31,7 @@ class ProfileViewModel @Inject constructor(
         fetchData()
     }
 
-    private fun fetchData() {
+    fun fetchData() {
         viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
             enableLoading()
             val steamId = requireNotNull(profileIdUseCase.getSteamId())

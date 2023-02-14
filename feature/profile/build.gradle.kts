@@ -52,6 +52,7 @@ dependencies {
     implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6")
 
     implementation("com.google.dagger:dagger:2.44.2")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     kapt("com.google.dagger:dagger-compiler:2.44.2")
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

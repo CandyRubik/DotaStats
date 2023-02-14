@@ -1,10 +1,9 @@
-package ru.rubik.dotastats.presentation
+package ru.rubik.dotastats.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 import ru.rubik.dotastats.presentation.errors.DialogErrors
 import java.io.IOException
 
@@ -17,7 +16,7 @@ abstract class ProgressBaseViewModel : ViewModel() {
     val error = _error.asStateFlow()
 
     val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        if(throwable is IOException) {
+        if (throwable is IOException) {
             _error.value = DialogErrors.NetworkConnectionError
         } else {
             _error.value = DialogErrors.OtherError

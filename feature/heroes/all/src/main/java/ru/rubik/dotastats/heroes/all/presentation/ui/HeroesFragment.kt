@@ -71,6 +71,10 @@ class HeroesFragment : ProgressBaseFragment(R.layout.fragment_heroes) {
         super.onViewCreated(view, savedInstanceState)
 
         viewBinding.recycler.adapter = adapter
+        viewBinding.swipeToRefresh.setOnRefreshListener {
+            viewModel.fetchData()
+            viewBinding.swipeToRefresh.isRefreshing = false
+        }
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.list.collect {

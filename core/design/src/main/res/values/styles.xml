@@ -7,16 +7,22 @@
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Button</item>
         <item name="android:backgroundTint">@color/accent</item>
     </style>
-    
+
+    <style name="Widget.DotaStats.FloatingActionButton" parent="Widget.Material3.Button">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="tint">?attr/colorOnPrimary</item>
+    </style>
+
     <attr name="background_color" format="color" />
     <attr name="primary_color" format="color" />
     <attr name="winLoseStatViewStyle" format="reference" />
 
     <declare-styleable name="WinLoseStatView">
-        <attr name="positivePercent" format="integer"/>
-        <attr name="positiveColor" format="color"/>
-        <attr name="negativeColor" format="color"/>
-        <attr name="strokeColor" format="color"/>
+        <attr name="positivePercent" format="integer" />
+        <attr name="positiveColor" format="color" />
+        <attr name="negativeColor" format="color" />
+        <attr name="strokeColor" format="color" />
     </declare-styleable>
 
     <style name="WinLoseStatViewStyle">

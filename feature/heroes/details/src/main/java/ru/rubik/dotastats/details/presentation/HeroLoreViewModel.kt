@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import ru.rubik.dotastats.details.domain.usecases.HeroesLoreUseCase
 import ru.rubik.dotastats.details.presentation.state.HeroLoreContentState
 import ru.rubik.dotastats.details.presentation.state.HeroLoreUiState
-import ru.rubik.dotastats.presentation.ProgressBaseViewModel
+import ru.rubik.dotastats.presentation.vm.ProgressBaseViewModel
 
 class HeroLoreViewModel(
     private val name: String,
@@ -26,7 +26,7 @@ class HeroLoreViewModel(
         fetchData()
     }
 
-    private fun fetchData() {
+    fun fetchData() {
         viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
             enableLoading()
             val lore = heroesLoreUseCase.getHeroLore(name)

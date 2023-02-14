@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import ru.rubik.dotastats.heroes_api.domain.models.Hero
 import ru.rubik.dotastats.heroes_api.domain.usecases.HeroesUseCase
-import ru.rubik.dotastats.presentation.ProgressBaseViewModel
+import ru.rubik.dotastats.presentation.vm.ProgressBaseViewModel
 import javax.inject.Inject
 
 class HeroesViewModel @Inject constructor(
@@ -21,7 +21,7 @@ class HeroesViewModel @Inject constructor(
         fetchData()
     }
 
-    private fun fetchData() {
+    fun fetchData() {
         viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
             enableLoading()
             _list.value = heroesUseCase.getHeroes()

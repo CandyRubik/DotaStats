@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import ru.rubik.dotastats.login.presentation.state.ContentState
 import ru.rubik.dotastats.login.presentation.state.LoginUiState
-import ru.rubik.dotastats.presentation.ProgressBaseViewModel
+import ru.rubik.dotastats.presentation.vm.ProgressBaseViewModel
 import ru.rubik.dotastats.profile_api.domain.usecases.ProfileUseCase
 import ru.rubik.dotastats.profile_id_api.domain.usecase.ProfileIdUseCase
 import javax.inject.Inject

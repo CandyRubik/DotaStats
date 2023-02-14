@@ -1,26 +1,3 @@
 <resources>
     <string name="app_name">DotaStats</string>
-    <string name="system_theme_button">Системная</string>
-    <string name="light_theme_button">Светлая</string>
-    <string name="dark_theme_button">Темная</string>
-    <string name="turbo_win_rate_text">Turbo win rate</string>
-    <string name="login_field_hint">Dota profile ID</string>
-    <string name="password_field_hint">Пароль</string>
-    <string name="login_button_text">Войти</string>
-    <string name="heroes_menu_title">Герои</string>
-    <string name="profile_menu_title">Профиль</string>
-    <string name="notes_menu_title">Заметки</string>
-    <string name="note_title_hint">Название</string>
-    <string name="add_note_button_text">Добавить</string>
-    <string name="remove_button_text">Удалить</string>
-    <string name="note_description_hint">Описание</string>
-
-    <string name="recent_played_text">Recent played</string>
-    <string name="turbo_stat_text">Turbo stat</string>
-    <string name="hero_lore_subtitle">Hero lore:</string>
-    <string name="hero_column_title">Hero</string>
-    <string name="kills_column_title">Kills</string>
-    <string name="death_column_title">Death</string>
-    <string name="assists_column_title">Assists</string>
-    <string name="xpm_column_title">XPM</string>
 </resources>

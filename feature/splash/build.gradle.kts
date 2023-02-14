@@ -46,6 +46,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
     implementation(project(":core:di"))
+    implementation(project(":core:presentation"))
     implementation(project(":common:profile-id:profile-id-api"))
     implementation(project(":common:night-mode:night-mode-api"))
 
