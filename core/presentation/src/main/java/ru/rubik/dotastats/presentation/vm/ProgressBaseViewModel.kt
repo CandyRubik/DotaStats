@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import ru.rubik.dotastats.presentation.errors.DialogErrors
+import ru.rubik.dotastats.presentation.dialogs.DialogErrors
 import java.io.IOException
 
 abstract class ProgressBaseViewModel : ViewModel() {

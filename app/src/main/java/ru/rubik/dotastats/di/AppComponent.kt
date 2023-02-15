@@ -7,7 +7,6 @@ import ru.rubik.dotastats.details.di.EditNoteExternalDependencies
 import ru.rubik.dotastats.details.di.HeroesLoreExternalDependencies
 import ru.rubik.dotastats.heroes.all.di.HeroesExternalDependencies
 import ru.rubik.dotastats.login.di.LoginExternalDependencies
-import ru.rubik.dotastats.main.di.MainExternalDependencies
 import ru.rubik.dotastats.notes.all.di.NotesExternalDependencies
 import ru.rubik.dotastats.profile.di.ProfileExternalDependencies
 import ru.rubik.dotastats.root.RootActivity
@@ -31,15 +30,17 @@ interface AppComponent :
     HeroesExternalDependencies,
     HeroesLoreExternalDependencies,
     NotesExternalDependencies,
-    EditNoteExternalDependencies,
-    MainExternalDependencies {
+    EditNoteExternalDependencies {
 
     fun inject(appActivity: RootActivity)
 
-    @Component.Factory
-    interface Factory {
+    @Component.Builder
+    interface Builder {
 
-        fun create(@BindsInstance context: Context): AppComponent
+        @BindsInstance
+        fun context(context: Context): Builder
+
+        fun build(): AppComponent
     }
 }
 

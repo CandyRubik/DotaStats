@@ -1,4 +1,4 @@
-package ru.rubik.dotastats.presentation.errors
+package ru.rubik.dotastats.presentation.dialogs
 
 sealed interface DialogErrors {
     object NetworkConnectionError: DialogErrors

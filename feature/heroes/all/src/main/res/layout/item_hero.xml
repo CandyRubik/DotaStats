@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
+    android:layout_margin="@dimen/spacing_s"
     android:background="?attr/colorOnPrimary"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="@dimen/card_corner_radius">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,8 +16,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image"
-            android:layout_width="256dp"
-            android:layout_height="128dp"
+            android:layout_width="@dimen/heroes_image_with"
+            android:layout_height="@dimen/heroes_image_height"
             tools:src="@drawable/loading_animation"
             android:scaleType="centerCrop" />
 
@@ -26,7 +26,7 @@
             style="@style/TextAppearance.DotaStats.Body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/spacing_m"
             android:textAlignment="center"
             android:lines="2"
             tools:text="Anti-Mage" />

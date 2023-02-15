@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spacing_s">8dp</dimen>
+    <dimen name="spacing_m">16dp</dimen>
+    <dimen name="spacing_l">20dp</dimen>
+    <dimen name="spacing_xl">24dp</dimen>
+    <dimen name="spacing_xxl">32dp</dimen>
+    <dimen name="button_margin_horizontal">64dp</dimen>
+    <dimen name="recent_games_image_with">64dp</dimen>
+    <dimen name="recent_games_image_height">32dp</dimen>
+    <dimen name="heroes_image_with">256dp</dimen>
+    <dimen name="heroes_image_height">128dp</dimen>
+    <dimen name="profile_image_radius">100dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+</resources>

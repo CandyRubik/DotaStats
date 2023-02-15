@@ -30,9 +30,9 @@
                     style="@style/Widget.DotaStats.FloatingActionButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="@dimen/spacing_m"
+                    android:layout_marginTop="@dimen/spacing_m"
+                    android:layout_marginBottom="@dimen/spacing_m"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -43,9 +43,9 @@
                     style="@style/Widget.DotaStats.FloatingActionButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="@dimen/spacing_m"
+                    android:layout_marginEnd="@dimen/spacing_m"
+                    android:layout_marginBottom="@dimen/spacing_m"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -54,8 +54,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/avatar"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/profile_image_radius"
+                android:layout_height="@dimen/profile_image_radius"
                 android:layout_gravity="center"
                 tools:src="@tools:sample/avatars" />
 
@@ -64,27 +64,27 @@
                 style="@style/TextAppearance.DotaStats.Header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/spacing_m"
                 tools:text="Username" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="16dp"
+                android:layout_marginHorizontal="@dimen/spacing_m"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextAppearance.DotaStats.Body"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/spacing_m"
                     android:text="@string/turbo_stat_text" />
 
                 <ru.rubik.dotastats.design.WinLoseStatView
                     android:id="@+id/win_lose_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/spacing_m"
                     app:positivePercent="50" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -92,14 +92,14 @@
                     style="@style/TextAppearance.DotaStats.Field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/spacing_s"
                     tools:text="Winrate 50%" />
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextAppearance.DotaStats.Body"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/spacing_m"
                     android:text="@string/recent_played_text" />
 
                 <include layout="@layout/item_recent_played_header" />
@@ -108,7 +108,7 @@
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/spacing_m"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_recent_played_match" />

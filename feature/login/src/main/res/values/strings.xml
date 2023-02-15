@@ -2,5 +2,5 @@
 <resources>
     <string name="login_button_text">Войти</string>
     <string name="login_field_hint">Dota ID</string>
-
+    <string name="incorrect_dota_id_error">Incorrect dota id</string>
 </resources>

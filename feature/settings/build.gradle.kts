@@ -53,5 +53,6 @@ dependencies {
     kapt("com.google.dagger:dagger-compiler:2.44.2")
 
     implementation(project(":core:di"))
+    implementation(project(":core:design"))
     implementation(project(":common:night-mode:night-mode-api"))
 }

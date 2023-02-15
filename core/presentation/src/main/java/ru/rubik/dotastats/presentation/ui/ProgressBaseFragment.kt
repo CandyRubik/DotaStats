@@ -1,16 +1,13 @@
 package ru.rubik.dotastats.presentation.ui
 
 import android.app.AlertDialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import ru.rubik.dotastats.presentation.R
-import ru.rubik.dotastats.presentation.errors.DialogErrors
+import ru.rubik.dotastats.presentation.dialogs.DialogErrors
+import ru.rubik.dotastats.presentation.dialogs.DialogFactory
 import ru.rubik.dotastats.presentation.vm.ProgressBaseViewModel
 
 abstract class ProgressBaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId) {
@@ -21,8 +18,12 @@ abstract class ProgressBaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(
 
     private var errorDialog: AlertDialog? = null
 
+    private var dialogFactory: DialogFactory? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        dialogFactory = DialogFactory(this)
 
         bindDialogs()
     }
@@ -34,7 +35,7 @@ abstract class ProgressBaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(
 
                 loadingDialog = if (isLoading && loadingDialog == null) {
                     errorDialog?.dismiss()
-                    createLoaderFragment()
+                    dialogFactory?.createLoaderFragment()
                 } else {
                     loadingDialog?.dismiss()
                     null
@@ -50,11 +51,15 @@ abstract class ProgressBaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(
                 errorDialog = when (error) {
                     DialogErrors.NetworkConnectionError -> {
                         loadingDialog?.dismiss()
-                        createNetworkErrorDialog()
+                        dialogFactory?.createNetworkErrorDialog {
+                            viewModel.disableError()
+                        }
                     }
                     DialogErrors.OtherError -> {
                         loadingDialog?.dismiss()
-                        createOtherErrorDialog()
+                        dialogFactory?.createOtherErrorDialog {
+                            viewModel.disableError()
+                        }
                     }
                     null -> {
                         errorDialog?.dismiss()
@@ -65,51 +70,10 @@ abstract class ProgressBaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(
         }
     }
 
-    protected open fun createOtherErrorDialog(): AlertDialog? {
-        return AlertDialog.Builder(requireActivity()).apply {
-            val view =
-                LayoutInflater.from(requireActivity()).inflate(R.layout.dialog_other_error, null)
-            setView(view)
-            setPositiveButton(getString(R.string.dialog_error_positive_button)) { _, _ ->
-                viewModel.disableError()
-            }
-        }.create().apply {
-            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            setCancelable(false)
-            show()
-        }
-    }
-
-    protected open fun createNetworkErrorDialog(): AlertDialog? {
-        return AlertDialog.Builder(requireActivity()).apply {
-            val view =
-                LayoutInflater.from(requireActivity()).inflate(R.layout.dialog_network_error, null)
-            setView(view)
-            setPositiveButton(getString(R.string.dialog_error_positive_button)) { _, _ ->
-                viewModel.disableError()
-            }
-        }.create().apply {
-            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            setCancelable(false)
-            show()
-        }
-    }
-
-    protected open fun createLoaderFragment(): AlertDialog? {
-        return AlertDialog.Builder(requireActivity()).apply {
-            val view = LayoutInflater.from(requireActivity()).inflate(R.layout.dialog_loading, null)
-            setView(view)
-        }.create().apply {
-            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            setCancelable(false)
-            show()
-            window?.setLayout(200, 200)
-        }
-    }
-
     override fun onDestroyView() {
         loadingDialog?.dismiss()
         loadingDialog = null
+        dialogFactory = null
         super.onDestroyView()
     }
 }

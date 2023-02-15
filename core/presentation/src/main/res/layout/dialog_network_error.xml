@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
+    android:layout_margin="@dimen/spacing_s"
     android:background="?attr/colorOnPrimary"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="@dimen/spacing_s">
 
     <com.google.android.material.textview.MaterialTextView
         style="@style/TextAppearance.DotaStats.Field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="32dp"
+        android:paddingHorizontal="@dimen/spacing_m"
+        android:paddingTop="@dimen/spacing_m"
+        android:paddingBottom="@dimen/spacing_xxl"
         android:text="@string/dialog_network_error_title" />
 
 </androidx.cardview.widget.CardView>

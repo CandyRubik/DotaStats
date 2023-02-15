@@ -45,6 +45,7 @@ class LoginViewModel @Inject constructor(
                         contentState = ContentState.ShowErrorToast
                     )
                 }
+                disableLoading()
             } else {
                 profileIdUseCase.setSteamId(_loginUiState.value.login)
                 _loginUiState.update {
@@ -52,8 +53,8 @@ class LoginViewModel @Inject constructor(
                         contentState = ContentState.NavigateToProfile
                     )
                 }
+                disableLoading()
             }
         }
-        disableLoading()
     }
 }

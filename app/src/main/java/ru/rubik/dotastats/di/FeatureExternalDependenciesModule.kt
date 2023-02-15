@@ -9,7 +9,6 @@ import ru.rubik.dotastats.di.dependency.FeatureExternalDependencies
 import ru.rubik.dotastats.di.dependency.FeatureExternalDependenciesKey
 import ru.rubik.dotastats.heroes.all.di.HeroesExternalDependencies
 import ru.rubik.dotastats.login.di.LoginExternalDependencies
-import ru.rubik.dotastats.main.di.MainExternalDependencies
 import ru.rubik.dotastats.notes.all.di.NotesExternalDependencies
 import ru.rubik.dotastats.profile.di.ProfileExternalDependencies
 import ru.rubik.dotastats.settings.di.SettingsExternalDependencies
@@ -57,9 +56,4 @@ interface FeatureExternalDependenciesModule {
     @IntoMap
     @FeatureExternalDependenciesKey(EditNoteExternalDependencies::class)
     fun bindEditNoteExternalDependencies(appComponent: AppComponent): FeatureExternalDependencies
-
-    @Binds
-    @IntoMap
-    @FeatureExternalDependenciesKey(MainExternalDependencies::class)
-    fun bindMainExternalDependencies(appComponent: AppComponent): FeatureExternalDependencies
 }

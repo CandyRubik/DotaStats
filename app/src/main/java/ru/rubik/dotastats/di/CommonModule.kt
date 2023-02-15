@@ -16,4 +16,4 @@ import ru.ruik.dotastats.notes_impl.di.NotesModule
         NotesModule::class,
     ]
 )
-class CommonModule
+object CommonModule

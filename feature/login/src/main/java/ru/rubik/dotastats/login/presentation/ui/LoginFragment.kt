@@ -23,7 +23,6 @@ import ru.rubik.dotastats.login.presentation.state.ContentState
 import ru.rubik.dotastats.login.presentation.state.LoginUiState
 import ru.rubik.dotastats.presentation.ui.ProgressBaseFragment
 import javax.inject.Inject
-import kotlin.random.Random
 
 class LoginFragment : ProgressBaseFragment(R.layout.fragment_login) {
 
@@ -73,15 +72,11 @@ class LoginFragment : ProgressBaseFragment(R.layout.fragment_login) {
             ContentState.ShowErrorToast -> {
                 Toast.makeText(
                     requireContext(),
-                    "Incorrect dota id",
+                    getString(R.string.incorrect_dota_id_error),
                     Toast.LENGTH_SHORT
                 ).show()
             }
-            ContentState.Input -> {
-                val randomIndex = Random.nextInt(emojiList.size)
-                val randomEmoji = emojiList[randomIndex]
-                binding.title.text = randomEmoji
-            }
+            ContentState.Input -> {}
         }
     }
 
@@ -97,15 +92,5 @@ class LoginFragment : ProgressBaseFragment(R.layout.fragment_login) {
         loginButton.setOnClickListener {
             viewModel.login()
         }
-    }
-
-    companion object {
-
-        val emojiList = listOf(
-            "\uD83D\uDE01", // 😁
-            "\uD83D\uDE05", // 😅
-            "\uD83E\uDD29", // 🤩
-            "\uD83D\uDE36\u200D\uD83C\uDF2B️" // 😶‍🌫️
-        )
     }
 }

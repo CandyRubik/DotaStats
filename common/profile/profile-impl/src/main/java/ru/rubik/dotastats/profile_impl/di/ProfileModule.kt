@@ -8,7 +8,6 @@ import retrofit2.create
 import ru.rubik.dotastats.profile_api.domain.repository.ProfileRepository
 import ru.rubik.dotastats.profile_impl.data.api.ProfileApi
 import ru.rubik.dotastats.profile_impl.data.repository.ProfileRepositoryImpl
-import javax.inject.Singleton
 
 @Module(
     includes = [ProfileBindsModule::class, ProfileProvidesModule::class]
@@ -16,7 +15,8 @@ import javax.inject.Singleton
 class ProfileModule
 
 @Module
-class ProfileProvidesModule {
+object ProfileProvidesModule {
+
     @Provides
     fun provideProfileApi(retrofit: Retrofit): ProfileApi = retrofit.create()
 }

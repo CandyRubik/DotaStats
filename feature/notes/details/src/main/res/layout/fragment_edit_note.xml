@@ -11,7 +11,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="@dimen/spacing_m"
         android:hint="@string/note_title_hint">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -26,8 +26,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="@dimen/spacing_m"
+        android:layout_marginTop="@dimen/spacing_l"
         android:hint="@string/note_description_hint">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -47,20 +47,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="32dp"
-        android:paddingVertical="16dp"
-        android:text="@string/add_note_button_text"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+        android:layout_marginHorizontal="@dimen/button_margin_horizontal"
+        android:layout_marginTop="@dimen/spacing_l"
+        android:paddingVertical="@dimen/spacing_m"
+        android:text="@string/add_note_button_text" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/remove_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="20dp"
-        android:paddingVertical="16dp"
-        android:text="@string/remove_button_text"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+        android:layout_marginHorizontal="@dimen/button_margin_horizontal"
+        android:layout_marginTop="@dimen/spacing_l"
+        android:paddingVertical="@dimen/spacing_m"
+        android:text="@string/remove_button_text" />
 </LinearLayout>

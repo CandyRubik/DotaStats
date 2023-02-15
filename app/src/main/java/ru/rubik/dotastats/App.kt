@@ -1,7 +1,6 @@
 package ru.rubik.dotastats
 
 import android.app.Application
-import android.content.Context
 import ru.rubik.dotastats.di.AppComponent
 import ru.rubik.dotastats.di.DaggerAppComponent
 
@@ -13,12 +12,6 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        component = DaggerAppComponent.factory().create(this)
+        component = DaggerAppComponent.builder().context(this).build()
     }
 }
-
-val Context.appComponent: AppComponent
-    get() = when (this) {
-        is App -> component
-        else -> (applicationContext as App).component
-    }

@@ -8,7 +8,6 @@ import retrofit2.create
 import ru.rubik.dotastats.heroes.data.api.HeroesApi
 import ru.rubik.dotastats.heroes.data.repository.HeroRepositoryImpl
 import ru.rubik.dotastats.heroes_api.domain.repository.HeroRepository
-import javax.inject.Singleton
 
 @Module(
     includes = [HeroesProvidesModule::class, HeroesBindsModule::class]
@@ -16,7 +15,7 @@ import javax.inject.Singleton
 class HeroesModule
 
 @Module
-class HeroesProvidesModule {
+object HeroesProvidesModule {
 
     @Provides
     fun provideHeroesApi(retrofit: Retrofit): HeroesApi = retrofit.create()

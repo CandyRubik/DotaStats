@@ -15,7 +15,7 @@ import ru.ruik.dotastats.notes_impl.data.repository.NotesLocalRepository
 class NotesModule
 
 @Module
-class NotesProvidesModule {
+object NotesProvidesModule {
 
     @Provides
     fun provideNotesDao(context: Context): NotesDao = NotesDatabase.getDatabase(context).noteDao()

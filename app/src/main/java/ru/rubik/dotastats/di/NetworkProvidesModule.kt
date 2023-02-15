@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import ru.rubik.dotastats.network.retrofit.RetrofitFactory
 
 @Module
-class NetworkProvidesModule {
+object NetworkProvidesModule {
 
     @Provides
     fun provideRetrofit(): Retrofit = RetrofitFactory.get
