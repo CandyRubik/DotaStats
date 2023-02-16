@@ -58,4 +58,17 @@ dependencies {
     implementation(project(":core:presentation"))
     implementation(project(":common:profile-id:profile-id-api"))
     implementation(project(":common:profile:profile-api"))
+
+    testImplementation("org.mockito:mockito-core:3.9.0")
+    testImplementation("org.mockito:mockito-inline:3.9.0")
+    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.test:runner:1.5.2")
+    androidTestImplementation("androidx.test:rules:1.5.0")
+    androidTestImplementation("com.agoda.kakao:kakao:2.3.4")
+    debugImplementation("androidx.fragment:fragment-testing:1.5.5")
 }
