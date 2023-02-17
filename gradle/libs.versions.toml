@@ -1,0 +1,71 @@
+[versions]
+
+# kotlinx
+kotlinVersion = "1.7.21"
+kotlinxSerializationJsonVersion = "1.3.3"
+
+#dagger
+daggerVersion = "2.44.2"
+
+#coil
+coilVersion = "2.2.2"
+
+#retrofit
+retrofitVersion = "2.9.0"
+loggingInterceptorVersion = "4.10.0"
+serializationConverterVersion = "0.8.0"
+
+#room
+roomVersion = "2.5.0"
+
+#android
+navigationVersion = "2.5.3"
+viewBindingDelegateVersion = "1.5.6"
+androidCoreVersion = "1.9.0"
+appCompatVersion = "1.6.1"
+materialVersion = "1.8.0"
+constraintLayoutVersion = "2.1.4"
+fragmentKtxVersion = "1.5.5"
+lifecycleViewModelVersion = "2.5.1"
+coroutinesAndroidVersion = "1.6.4"
+swipeToRefreshVersion = "1.1.0"
+
+
+[libraries]
+
+# kotlinx
+kotlinxSerialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlinVersion" }
+kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJsonVersion" }
+
+#dagger
+dagger = { module = "com.google.dagger:dagger", version.ref = "daggerVersion" }
+daggerCompiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerVersion" }
+
+#coil
+coil = { module = "io.coil-kt:coil", version.ref = "coilVersion" }
+
+#retrofit
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
+loggingInterceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptorVersion" }
+serializationConverter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "serializationConverterVersion" }
+
+#room
+roomKtx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
+roomRuntime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
+roomCompiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
+
+#android
+navigationFragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationVersion" }
+navigationUi = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationVersion" }
+navigationClasspath = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationVersion" }
+viewBindingDelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate-noreflection", version.ref = "viewBindingDelegateVersion" }
+androidCore = { module = "androidx.core:core-ktx", version.ref = "androidCoreVersion" }
+appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompatVersion" }
+material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+constraint = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintLayoutVersion" }
+fragmentKtx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtxVersion" }
+lifecycleViewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewModelVersion" }
+coroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutinesAndroidVersion" }
+swipeToRefresh = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swipeToRefreshVersion" }
+kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinVersion" }
+androidGradle = { module = "com.android.tools.build:gradle", version = "7.2.0" }
