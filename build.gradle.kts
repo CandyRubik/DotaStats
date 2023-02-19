@@ -15,6 +15,8 @@ buildscript {
     dependencies {
         classpath(libs.navigationClasspath)
         classpath(libs.kotlinxSerialization)
+        classpath(libs.firebaseCrashlyticsGradle)
+        classpath(libs.gmsServices)
     }
 }
 

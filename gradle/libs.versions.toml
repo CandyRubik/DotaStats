@@ -84,3 +84,10 @@ mockitoKotlinTest = { module = "com.nhaarman.mockitokotlin2:mockito-kotlin", ver
 junitTest = { module = "junit:junit", version.ref = "junitVersion" }
 androidArchTest = { module = "androidx.arch.core:core-testing", version.ref = "androidTestVersion" }
 coroutinesTest = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutinesTestVersion" }
+
+#gms
+firebaseCrashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx", version = "18.3.5" }
+firebaseAnalytics = { module = "com.google.firebase:firebase-analytics-ktx", version = "21.2.0" }
+firebaseCore = { module = "com.google.firebase:firebase-core", version = "21.1.1" }
+gmsServices = { module = "com.google.gms:google-services", version = "4.3.15" }
+firebaseCrashlyticsGradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version = "2.9.4" }

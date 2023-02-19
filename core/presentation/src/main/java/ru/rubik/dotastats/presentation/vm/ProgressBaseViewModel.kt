@@ -1,6 +1,7 @@
 package ru.rubik.dotastats.presentation.vm
 
 import androidx.lifecycle.ViewModel
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,6 +17,7 @@ abstract class ProgressBaseViewModel : ViewModel() {
     val error = _error.asStateFlow()
 
     val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        FirebaseCrashlytics.getInstance().recordException(throwable)
         if (throwable is IOException) {
             _error.value = DialogErrors.NetworkConnectionError
         } else {

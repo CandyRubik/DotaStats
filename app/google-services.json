@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "108030381587",
+    "project_id": "dotastats-c9ce7",
+    "storage_bucket": "dotastats-c9ce7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108030381587:android:992194d3d0fbb1e7ef79e6",
+        "android_client_info": {
+          "package_name": "ru.rubik.dotastats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108030381587-dalgr5tj111vnpoo1hljpau25lmqoq93.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0Ujyp7_hHbTggTNKtHGRwVUPkj4df52U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108030381587-dalgr5tj111vnpoo1hljpau25lmqoq93.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

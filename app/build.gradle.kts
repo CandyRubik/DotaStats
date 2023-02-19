@@ -2,6 +2,8 @@ plugins {
     id("android-app-convention")
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.firebase.crashlytics")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -51,4 +53,9 @@ dependencies {
     implementation(project(Modules.Feature.NOTES_DETAILS))
     implementation(project(Modules.Feature.NOTES_ALL))
     implementation(project(Modules.Feature.MAIN))
+
+    // Firebase
+    implementation(libs.firebaseCrashlytics)
+    implementation(libs.firebaseAnalytics)
+    implementation(libs.firebaseCore)
 }

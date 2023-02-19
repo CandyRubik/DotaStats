@@ -19,4 +19,5 @@ dependencies {
     implementation(libs.viewBindingDelegate)
 
     implementation(project(Modules.DESIGN))
+    implementation(libs.firebaseCrashlytics)
 }
