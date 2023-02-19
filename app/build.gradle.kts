@@ -1,92 +1,54 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-parcelize")
+    id("android-app-convention")
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
-    id("kotlinx-serialization")
 }
 
 android {
     namespace = "ru.rubik.dotastats"
-    compileSdk = 33
-
-    defaultConfig {
-        applicationId = "ru.rubik.dotastats"
-        minSdk = 28
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-        }
-    }
-    buildFeatures {
-        viewBinding = true
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.0")
-    implementation("com.google.android.material:material:1.8.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.fragment:fragment-ktx:1.5.5")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6")
+    implementation(libs.androidCore)
+    implementation(libs.appCompat)
+    implementation(libs.material)
+    implementation(libs.constraint)
+    implementation(libs.fragmentKtx)
+    implementation(libs.navigationUi)
+    implementation(libs.navigationFragment)
+    implementation(libs.lifecycleViewModel)
+    implementation(libs.coroutinesAndroid)
+    implementation(libs.viewBindingDelegate)
 
-    //Room
-    implementation("androidx.room:room-ktx:2.5.0")
-    implementation("androidx.room:room-runtime:2.5.0")
-    kapt("androidx.room:room-compiler:2.5.0")
-
-    //Coil
-    implementation("io.coil-kt:coil:2.2.2")
+    //Dagger
+    implementation(libs.dagger)
+    kapt(libs.daggerCompiler)
 
     //Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+    implementation(libs.retrofit)
 
-    implementation(project(":core:presentation"))
-    implementation(project(":core:network"))
-    implementation(project(":core:di"))
-    implementation(project(":core:design"))
-    implementation(project(":common:heroes:heroes-api"))
-    implementation(project(":common:heroes:heroes-impl"))
-    implementation(project(":common:night-mode:night-mode-impl"))
-    implementation(project(":common:night-mode:night-mode-api"))
-    implementation(project(":common:profile-id:profile-id-impl"))
-    implementation(project(":common:profile-id:profile-id-api"))
-    implementation(project(":common:profile:profile-api"))
-    implementation(project(":common:profile:profile-impl"))
-    implementation(project(":common:notes:notes-api"))
-    implementation(project(":common:notes:notes-impl"))
-    implementation(project(":feature:splash"))
-    implementation(project(":feature:login"))
-    implementation(project(":feature:profile"))
-    implementation(project(":feature:settings"))
-    implementation(project(":feature:heroes:all"))
-    implementation(project(":feature:heroes:details"))
-    implementation(project(":feature:notes:all"))
-    implementation(project(":feature:notes:details"))
-    implementation(project(":feature:main"))
-
-    implementation("com.google.dagger:dagger:2.44.2")
-    kapt("com.google.dagger:dagger-compiler:2.44.2")
+    implementation(project(Modules.PRESENTATION))
+    implementation(project(Modules.NETWORK))
+    implementation(project(Modules.DI))
+    implementation(project(Modules.DESIGN))
+    implementation(project(Modules.Common.HEROES_API))
+    implementation(project(Modules.Common.HEROES_IMPL))
+    implementation(project(Modules.Common.NIGHT_MODE_IMPL))
+    implementation(project(Modules.Common.NIGHT_MODE_API))
+    implementation(project(Modules.Common.PROFILE_API))
+    implementation(project(Modules.Common.PROFILE_IMPL))
+    implementation(project(Modules.Common.PROFILE_ID_API))
+    implementation(project(Modules.Common.PROFILE_ID_IMPL))
+    implementation(project(Modules.Common.NOTES_IMPL))
+    implementation(project(Modules.Common.NOTES_API))
+    implementation(project(Modules.Feature.SPLASH))
+    implementation(project(Modules.Feature.LOGIN))
+    implementation(project(Modules.Feature.PROFILE))
+    implementation(project(Modules.Feature.SETTINGS))
+    implementation(project(Modules.Feature.HEROES_ALL))
+    implementation(project(Modules.Feature.HEROES_DETAILS))
+    implementation(project(Modules.Feature.NOTES_DETAILS))
+    implementation(project(Modules.Feature.NOTES_ALL))
+    implementation(project(Modules.Feature.MAIN))
 }

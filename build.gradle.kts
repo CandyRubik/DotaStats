@@ -8,11 +8,32 @@ plugins {
 
 buildscript {
     repositories {
+        mavenCentral()
         google()
+        gradlePluginPortal()
     }
     dependencies {
-        val nav_version = "2.5.3"
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.7.20")
+        classpath(libs.navigationClasspath)
+        classpath(libs.kotlinxSerialization)
     }
+}
+
+allprojects {
+    configurations.configureEach {
+        resolutionStrategy {
+            val coroutines: MinimalExternalModuleDependency =
+                rootProject.libs.coroutinesAndroid.get()
+            val forcedCoroutines: ModuleVersionSelector =
+                org.gradle.api.internal.artifacts.DefaultModuleVersionSelector.newSelector(
+                    coroutines.module,
+                    coroutines.versionConstraint.requiredVersion
+                )
+            force(forcedCoroutines)
+        }
+    }
+}
+
+tasks.register("clean", Delete::class).configure {
+    group = "build"
+    delete(rootProject.buildDir)
 }

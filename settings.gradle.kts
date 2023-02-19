@@ -1,3 +1,5 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -5,14 +7,22 @@ pluginManagement {
         mavenCentral()
     }
 }
+
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+
+        mavenCentral {
+            content {
+                includeGroup("org.jetbrains.kotlinx")
+            }
+        }
     }
 }
-rootProject.name = "DotaStats"
+
+includeBuild("build-logic")
+
 include(":app")
 include(":core:network")
 include(":core:presentation")
