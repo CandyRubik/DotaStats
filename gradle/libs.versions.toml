@@ -30,6 +30,13 @@ lifecycleViewModelVersion = "2.5.1"
 coroutinesAndroidVersion = "1.6.4"
 swipeToRefreshVersion = "1.1.0"
 
+#test
+mockitoVersion = "3.7.0"
+mockitoKotlinVersion = "2.2.0"
+junitVersion = "4.13.2"
+androidTestVersion = "2.1.0"
+coroutinesTestVersion = "1.6.4"
+
 
 [libraries]
 
@@ -69,3 +76,11 @@ coroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android
 swipeToRefresh = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swipeToRefreshVersion" }
 kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinVersion" }
 androidGradle = { module = "com.android.tools.build:gradle", version = "7.2.0" }
+
+#test
+mockitoTest = { module = "org.mockito:mockito-core", version.ref = "mockitoVersion" }
+mockitoInlineTest = { module = "org.mockito:mockito-inline", version.ref = "mockitoVersion" }
+mockitoKotlinTest = { module = "com.nhaarman.mockitokotlin2:mockito-kotlin", version.ref = "mockitoKotlinVersion" }
+junitTest = { module = "junit:junit", version.ref = "junitVersion" }
+androidArchTest = { module = "androidx.arch.core:core-testing", version.ref = "androidTestVersion" }
+coroutinesTest = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutinesTestVersion" }

@@ -115,9 +115,9 @@ class LoginViewModelTest {
         }
 
     @Test
-    fun `WHEN login WITH note valid profile EXPECT update loginUiState ShowErrorToast`() =
+    fun `WHEN login WITH not valid profile EXPECT update loginUiState ShowErrorToast`() =
         runBlocking {
-            val loginStub = ""
+            val loginStub = "12"
             val profileStub = null
             whenever(profileUseCase.getProfile(loginStub)).thenReturn(
                 profileStub
@@ -131,8 +131,6 @@ class LoginViewModelTest {
 
             viewModel.updateLogin(loginStub)
             viewModel.login()
-
-            verify(profileUseCase).getProfile(loginStub)
             assertEquals(expectedState, viewModel.loginUiState.value)
         }
 

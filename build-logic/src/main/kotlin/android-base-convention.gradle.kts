@@ -1,8 +1,23 @@
 import com.android.build.gradle.BaseExtension
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = Settings.JVM_TARGET
+}
+
+tasks.withType<Test> {
+    testLogging {
+        exceptionFormat = TestExceptionFormat.FULL
+        events = setOf(
+            TestLogEvent.STARTED,
+            TestLogEvent.SKIPPED,
+            TestLogEvent.PASSED,
+            TestLogEvent.FAILED,
+        )
+        showStandardStreams = true
+    }
 }
 
 configure<BaseExtension> {
@@ -13,7 +28,7 @@ configure<BaseExtension> {
         targetSdk = Settings.TARGET_SDK_VERSION
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }

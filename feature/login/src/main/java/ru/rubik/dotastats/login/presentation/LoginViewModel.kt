@@ -1,7 +1,6 @@
 package ru.rubik.dotastats.login.presentation
 
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
@@ -36,7 +35,7 @@ class LoginViewModel @Inject constructor(
     }
 
     fun login() {
-        viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
+        viewModelScope.launch(exceptionHandler) {
             enableLoading()
             val profile = profileUseCase.getProfile(_loginUiState.value.login)
             if (profile == null) {
