@@ -8,8 +8,8 @@ import ru.rubik.dotastats.notes.all.presentation.NotesFeatureComponentDependenci
 class NotesFeatureComponentViewModel : ViewModel() {
 
     val component by lazy {
-        DaggerNotesComponent.factory()
-            .create(checkNotNull(featureDependencies))
+        DaggerNotesComponent.builder()
+            .create(checkNotNull(featureDependencies)).build()
     }
 
     override fun onCleared() {

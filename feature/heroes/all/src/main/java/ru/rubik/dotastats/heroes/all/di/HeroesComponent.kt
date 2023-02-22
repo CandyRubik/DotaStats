@@ -11,10 +11,11 @@ import ru.rubik.dotastats.heroes.all.presentation.ui.HeroesFragment
 )
 interface HeroesComponent {
 
-    @Component.Factory
-    interface Factory {
+    @Component.Builder
+    interface Builder {
 
-        fun create(dependencies: HeroesExternalDependencies): HeroesComponent
+        fun build(): HeroesComponent
+        fun create(dependencies: HeroesExternalDependencies): Builder
     }
 
     fun inject(heroesFragment: HeroesFragment)

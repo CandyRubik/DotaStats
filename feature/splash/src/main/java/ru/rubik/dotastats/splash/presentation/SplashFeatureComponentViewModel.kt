@@ -8,8 +8,8 @@ import ru.rubik.dotastats.splash.presentation.SplashFeatureComponentDependencies
 class SplashFeatureComponentViewModel : ViewModel() {
 
     val component by lazy {
-        DaggerSplashComponent.factory()
-            .create(checkNotNull(featureDependencies))
+        DaggerSplashComponent.builder()
+            .create(checkNotNull(featureDependencies)).build()
     }
 
     override fun onCleared() {

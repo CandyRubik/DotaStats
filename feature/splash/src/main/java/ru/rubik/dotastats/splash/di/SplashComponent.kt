@@ -11,10 +11,11 @@ import ru.rubik.dotastats.splash.presentation.ui.SplashFragment
 )
 interface SplashComponent {
 
-    @Component.Factory
-    interface Factory {
+    @Component.Builder
+    interface Builder {
 
-        fun create(dependencies: SplashExternalDependencies): SplashComponent
+        fun build(): SplashComponent
+        fun create(dependencies: SplashExternalDependencies): Builder
     }
 
     fun inject(splashFragment: SplashFragment)

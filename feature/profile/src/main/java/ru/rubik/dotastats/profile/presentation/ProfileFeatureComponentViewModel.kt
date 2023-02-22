@@ -8,8 +8,8 @@ import ru.rubik.dotastats.profile.presentation.ProfileFeatureComponentDependenci
 class ProfileFeatureComponentViewModel : ViewModel() {
 
     val component by lazy {
-        DaggerProfileComponent.factory()
-            .create(checkNotNull(featureDependencies))
+        DaggerProfileComponent.builder()
+            .create(checkNotNull(featureDependencies)).build()
     }
 
     override fun onCleared() {

@@ -10,10 +10,11 @@ import ru.rubik.dotastats.di.FeatureScope
 )
 interface EditNoteComponent {
 
-    @Component.Factory
-    interface Factory {
+    @Component.Builder
+    interface Builder {
 
-        fun create(dependencies: EditNoteExternalDependencies): EditNoteComponent
+        fun build(): EditNoteComponent
+        fun create(dependencies: EditNoteExternalDependencies): Builder
     }
 
     fun inject(editNoteFragment: EditNoteFragment)

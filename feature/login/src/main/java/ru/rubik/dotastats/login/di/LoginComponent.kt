@@ -11,10 +11,11 @@ import ru.rubik.dotastats.login.presentation.ui.LoginFragment
 )
 interface LoginComponent {
 
-    @Component.Factory
-    interface Factory {
+    @Component.Builder
+    interface Builder {
 
-        fun create(dependencies: LoginExternalDependencies): LoginComponent
+        fun build(): LoginComponent
+        fun create(dependencies: LoginExternalDependencies): Builder
     }
 
     fun inject(loginFragment: LoginFragment)
