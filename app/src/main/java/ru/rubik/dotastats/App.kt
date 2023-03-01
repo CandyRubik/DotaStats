@@ -13,6 +13,6 @@ class App : Application() {
     override fun onCreate() {
         FirebaseApp.initializeApp(this)
         super.onCreate()
-        component = DaggerAppComponent.builder().context(this).build()
+        component = DaggerAppComponent.factory().context(this)
     }
 }
