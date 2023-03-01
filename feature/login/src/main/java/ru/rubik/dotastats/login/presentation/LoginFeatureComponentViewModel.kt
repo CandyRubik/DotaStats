@@ -8,8 +8,8 @@ import ru.rubik.dotastats.login.presentation.LoginFeatureComponentDependenciesPr
 class LoginFeatureComponentViewModel : ViewModel() {
 
     val component by lazy {
-        DaggerLoginComponent.builder()
-            .create(checkNotNull(featureDependencies)).build()
+        DaggerLoginComponent.factory()
+            .create(checkNotNull(featureDependencies))
     }
 
     override fun onCleared() {

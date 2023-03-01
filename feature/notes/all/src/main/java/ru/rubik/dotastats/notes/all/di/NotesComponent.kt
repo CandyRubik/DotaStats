@@ -11,11 +11,10 @@ import ru.rubik.dotastats.notes.all.presentation.ui.NotesFragment
 )
 interface NotesComponent {
 
-    @Component.Builder
-    interface Builder {
+    @Component.Factory
+    interface Factory {
 
-        fun build(): NotesComponent
-        fun create(dependencies: NotesExternalDependencies): Builder
+        fun create(dependencies: NotesExternalDependencies): NotesComponent
     }
 
     fun inject(notesFragment: NotesFragment)

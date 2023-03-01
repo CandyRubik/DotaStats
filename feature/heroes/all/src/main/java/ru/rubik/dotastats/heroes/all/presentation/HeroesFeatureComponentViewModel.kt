@@ -8,8 +8,8 @@ import ru.rubik.dotastats.heroes.all.presentation.HeroesFeatureComponentDependen
 class HeroesFeatureComponentViewModel : ViewModel() {
 
     val component by lazy {
-        DaggerHeroesComponent.builder()
-            .create(checkNotNull(featureDependencies)).build()
+        DaggerHeroesComponent.factory()
+            .create(checkNotNull(featureDependencies))
     }
 
     override fun onCleared() {

@@ -11,11 +11,10 @@ import ru.rubik.dotastats.profile.presentation.ui.ProfileFragment
 )
 interface ProfileComponent {
 
-    @Component.Builder
-    interface Builder {
+    @Component.Factory
+    interface Factory {
 
-        fun build(): ProfileComponent
-        fun create(dependencies: ProfileExternalDependencies): Builder
+        fun create(dependencies: ProfileExternalDependencies): ProfileComponent
     }
 
     fun inject(profileFragment: ProfileFragment)

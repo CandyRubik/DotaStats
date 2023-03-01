@@ -11,11 +11,10 @@ import ru.rubik.dotastats.di.FeatureScope
 )
 interface HeroesLoreComponent {
 
-    @Component.Builder
-    interface Builder {
+    @Component.Factory
+    interface Factory {
 
-        fun build(): HeroesLoreComponent
-        fun create(dependencies: HeroesLoreExternalDependencies): Builder
+        fun create(dependencies: HeroesLoreExternalDependencies): HeroesLoreComponent
     }
 
     fun inject(heroesLoreFragment: HeroLoreFragment)

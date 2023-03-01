@@ -11,11 +11,10 @@ import ru.rubik.dotastats.settings.presentation.ui.SettingsFragment
 )
 interface SettingsComponent {
 
-    @Component.Builder
-    interface Builder {
+    @Component.Factory
+    interface Factory {
 
-        fun build(): SettingsComponent
-        fun create(dependencies: SettingsExternalDependencies): Builder
+        fun create(dependencies: SettingsExternalDependencies): SettingsComponent
     }
 
     fun inject(settingsFragment: SettingsFragment)

@@ -8,8 +8,8 @@ import ru.rubik.dotastats.settings.presentation.SettingsFeatureComponentDependen
 class SettingsFeatureComponentViewModel : ViewModel() {
 
     val component by lazy {
-        DaggerSettingsComponent.builder()
-            .create(checkNotNull(featureDependencies)).build()
+        DaggerSettingsComponent.factory()
+            .create(checkNotNull(featureDependencies))
     }
 
     override fun onCleared() {
