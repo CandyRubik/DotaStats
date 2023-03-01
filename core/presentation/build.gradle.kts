@@ -1,5 +1,5 @@
 plugins {
-    id("android-library-convention")
+    id(libs.plugins.libraryConvention.get().pluginId)
 }
 
 android {
@@ -8,15 +8,7 @@ android {
 
 dependencies {
 
-    implementation(libs.androidCore)
-    implementation(libs.appCompat)
-    implementation(libs.material)
-    implementation(libs.fragmentKtx)
-    implementation(libs.navigationUi)
-    implementation(libs.navigationFragment)
-    implementation(libs.lifecycleViewModel)
-    implementation(libs.coroutinesAndroid)
-    implementation(libs.viewBindingDelegate)
+    implementation(libs.bundles.androidUi)
 
     implementation(project(Modules.DESIGN))
     implementation(libs.firebaseCrashlytics)

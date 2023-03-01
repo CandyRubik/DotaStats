@@ -15,7 +15,6 @@ import ru.rubik.dotastats.di.dependency.findFeatureExternalDependencies
 import ru.rubik.dotastats.di.viewmodel.MultiViewModelFactory
 import ru.rubik.dotastats.login.R
 import ru.rubik.dotastats.login.databinding.FragmentLoginBinding
-import ru.rubik.dotastats.login.di.LoginNavigation
 import ru.rubik.dotastats.login.presentation.LoginFeatureComponentDependenciesProvider
 import ru.rubik.dotastats.login.presentation.LoginFeatureComponentViewModel
 import ru.rubik.dotastats.login.presentation.LoginViewModel
@@ -32,9 +31,6 @@ class LoginFragment : ProgressBaseFragment(R.layout.fragment_login) {
     override val viewModel: LoginViewModel by viewModels { viewModelFactory }
 
     private val binding: FragmentLoginBinding by viewBinding(FragmentLoginBinding::bind)
-
-    @Inject
-    lateinit var navigation: LoginNavigation
 
     override fun onAttach(context: Context) {
         LoginFeatureComponentDependenciesProvider.featureDependencies =
@@ -59,25 +55,22 @@ class LoginFragment : ProgressBaseFragment(R.layout.fragment_login) {
     private fun obtainUiState(
         uiState: LoginUiState,
     ) {
-        when (uiState.contentState) {
-            is ContentState.NavigateToProfile -> {
-                val result = findNavController().popBackStack(navigation.authGraphIdResource, true)
-                if (result.not()) {
-                    // we can't open new destination with this action
-                    // --> we opened Auth flow from splash
-                    // --> need to open main graph
-                    findNavController().navigate(navigation.mainFragmentResource)
-                }
-            }
-            ContentState.ShowErrorToast -> {
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.incorrect_dota_id_error),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            ContentState.Input -> {}
-        }
+        obtainShowErrorToast(uiState.contentState as? ContentState.ShowErrorToast)
+        obtainNavigateToProfile(uiState.contentState as? ContentState.NavigateToProfile)
+    }
+
+    private fun obtainShowErrorToast(state: ContentState.ShowErrorToast?) {
+        state ?: return
+        Toast.makeText(
+            requireContext(),
+            getString(R.string.incorrect_dota_id_error),
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
+    private fun obtainNavigateToProfile(state: ContentState.NavigateToProfile?) {
+        state ?: return
+        viewModel.navigateToMain(findNavController())
     }
 
     private fun obtainLoginButtonEnabled(isEnabled: Boolean) {

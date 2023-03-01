@@ -18,6 +18,7 @@ import ru.rubik.dotastats.heroes.all.di.HeroesNavigation
 import ru.rubik.dotastats.heroes.all.presentation.HeroesFeatureComponentDependenciesProvider
 import ru.rubik.dotastats.heroes.all.presentation.HeroesFeatureComponentViewModel
 import ru.rubik.dotastats.heroes.all.presentation.HeroesViewModel
+import ru.rubik.dotastats.heroes.all.presentation.ui.adapter.HeroItemAnimator
 import ru.rubik.dotastats.heroes.all.presentation.ui.adapter.HeroesAdapter
 import ru.rubik.dotastats.heroes_api.domain.models.Hero
 import ru.rubik.dotastats.presentation.ui.ProgressBaseFragment
@@ -54,8 +55,7 @@ class HeroesFragment : ProgressBaseFragment(R.layout.fragment_heroes) {
                 }
             },
             onItemClickListener = { hero ->
-                val action = navigation.navigateToHeroDetail(hero.name)
-                findNavController().navigate(action)
+                viewModel.navigateToDetail(findNavController(), hero.name)
             }
         )
     }
@@ -70,6 +70,7 @@ class HeroesFragment : ProgressBaseFragment(R.layout.fragment_heroes) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewBinding.recycler.itemAnimator = HeroItemAnimator()
         viewBinding.recycler.adapter = adapter
         viewBinding.swipeToRefresh.setOnRefreshListener {
             viewModel.fetchData()

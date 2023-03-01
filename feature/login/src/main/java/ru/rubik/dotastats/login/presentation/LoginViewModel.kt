@@ -1,11 +1,13 @@
 package ru.rubik.dotastats.login.presentation
 
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavController
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import ru.rubik.dotastats.login.di.LoginNavigation
 import ru.rubik.dotastats.login.presentation.state.ContentState
 import ru.rubik.dotastats.login.presentation.state.LoginUiState
 import ru.rubik.dotastats.presentation.vm.ProgressBaseViewModel
@@ -16,6 +18,7 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val profileIdUseCase: ProfileIdUseCase,
     private val profileUseCase: ProfileUseCase,
+    private val loginNavigation: LoginNavigation,
 ) : ProgressBaseViewModel() {
 
     private val _loginUiState = MutableStateFlow(LoginUiState())
@@ -55,5 +58,9 @@ class LoginViewModel @Inject constructor(
                 disableLoading()
             }
         }
+    }
+
+    fun navigateToMain(navController: NavController) {
+        loginNavigation.navigateToMain(navController)
     }
 }

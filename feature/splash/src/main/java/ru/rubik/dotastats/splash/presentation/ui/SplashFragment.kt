@@ -8,11 +8,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
 import ru.rubik.dotastats.di.dependency.findFeatureExternalDependencies
 import ru.rubik.dotastats.di.viewmodel.MultiViewModelFactory
 import ru.rubik.dotastats.splash.R
-import ru.rubik.dotastats.splash.di.SplashNavigation
 import ru.rubik.dotastats.splash.presentation.SplashFeatureComponentDependenciesProvider
 import ru.rubik.dotastats.splash.presentation.SplashFeatureComponentViewModel
 import ru.rubik.dotastats.splash.presentation.SplashViewModel
@@ -25,9 +23,6 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     lateinit var viewModelFactory: MultiViewModelFactory
 
     private val viewModel: SplashViewModel by viewModels { viewModelFactory }
-
-    @Inject
-    lateinit var navigation: SplashNavigation
 
     override fun onAttach(context: Context) {
         SplashFeatureComponentDependenciesProvider.featureDependencies =
@@ -49,22 +44,15 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         uiState: MainUiState,
     ) {
         uiState.isSignedIn?.let {
-            val navController = Navigation.findNavController(
-                requireActivity(),
-                navigation.activityNavHost,
-            )
-
-            val mainGraph = navController.navInflater.inflate(navigation.appGraphResource)
-
-            mainGraph.setStartDestination(
-                if (uiState.isSignedIn) {
-                    navigation.mainFragmentResource
-                } else {
-                    navigation.authGraphResource
-                }
-            )
-
-            navController.graph = mainGraph
+            if (uiState.isSignedIn) {
+                viewModel.changeStartDestinationByIsSignedIn(
+                    requireActivity(),
+                )
+            } else {
+                viewModel.changeStartDestinationByIsSignedIn(
+                    requireActivity(),
+                )
+            }
         }
     }
 }

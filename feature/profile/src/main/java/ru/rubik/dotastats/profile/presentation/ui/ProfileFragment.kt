@@ -8,7 +8,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -19,7 +18,6 @@ import ru.rubik.dotastats.di.viewmodel.MultiViewModelFactory
 import ru.rubik.dotastats.presentation.ui.ProgressBaseFragment
 import ru.rubik.dotastats.profile.R
 import ru.rubik.dotastats.profile.databinding.FragmentProfileBinding
-import ru.rubik.dotastats.profile.di.ProfileNavigation
 import ru.rubik.dotastats.profile.domain.models.MatchInfo
 import ru.rubik.dotastats.profile.presentation.ProfileFeatureComponentDependenciesProvider
 import ru.rubik.dotastats.profile.presentation.ProfileFeatureComponentViewModel
@@ -37,9 +35,6 @@ class ProfileFragment : ProgressBaseFragment(R.layout.fragment_profile) {
     override val viewModel: ProfileViewModel by viewModels { viewModelFactory }
 
     private val binding: FragmentProfileBinding by viewBinding(FragmentProfileBinding::bind)
-
-    @Inject
-    lateinit var navigation: ProfileNavigation
 
     private val adapter by lazy {
         RecentPlayedMatchAdapter(
@@ -91,7 +86,7 @@ class ProfileFragment : ProgressBaseFragment(R.layout.fragment_profile) {
 
     private fun setUpListeners() {
         binding.settingsButton.setOnClickListener {
-            findNavController().navigate(navigation.actionProfileFragmentToSettingsFragment)
+            viewModel.navigateToSettings(findNavController())
         }
 
         binding.swipeToRefresh.setOnRefreshListener {
@@ -100,9 +95,7 @@ class ProfileFragment : ProgressBaseFragment(R.layout.fragment_profile) {
         }
 
         binding.logoutButton.setOnClickListener {
-            viewModel.onLogoutClocked()
-            requireActivity().findNavController(navigation.activityNavHost)
-                .navigate(navigation.actionMainFragmentToAuthGraph)
+            viewModel.onLogoutClocked(requireActivity())
         }
     }
 

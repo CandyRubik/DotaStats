@@ -1,12 +1,8 @@
 package ru.rubik.dotastats.login.di
 
-import androidx.annotation.IdRes
+import androidx.navigation.NavController
 
 interface LoginNavigation {
 
-    @get:IdRes
-    val mainFragmentResource: Int
-
-    @get:IdRes
-    val authGraphIdResource: Int
+    fun navigateToMain(navController: NavController)
 }

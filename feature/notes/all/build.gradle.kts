@@ -1,6 +1,6 @@
 plugins {
-    id("android-library-convention")
-    id("kotlin-kapt")
+    id(libs.plugins.libraryConvention.get().pluginId)
+    id(libs.plugins.kotlinKapt.get().pluginId)
 }
 
 android {
@@ -9,16 +9,7 @@ android {
 
 dependencies {
 
-    implementation(libs.androidCore)
-    implementation(libs.appCompat)
-    implementation(libs.material)
-    implementation(libs.constraint)
-    implementation(libs.fragmentKtx)
-    implementation(libs.navigationUi)
-    implementation(libs.navigationFragment)
-    implementation(libs.lifecycleViewModel)
-    implementation(libs.coroutinesAndroid)
-    implementation(libs.viewBindingDelegate)
+    implementation(libs.bundles.androidUi)
 
     // Dagger
     implementation(libs.dagger)

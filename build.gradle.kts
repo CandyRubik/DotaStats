@@ -20,21 +20,6 @@ buildscript {
     }
 }
 
-allprojects {
-    configurations.configureEach {
-        resolutionStrategy {
-            val coroutines: MinimalExternalModuleDependency =
-                rootProject.libs.coroutinesAndroid.get()
-            val forcedCoroutines: ModuleVersionSelector =
-                org.gradle.api.internal.artifacts.DefaultModuleVersionSelector.newSelector(
-                    coroutines.module,
-                    coroutines.versionConstraint.requiredVersion
-                )
-            force(forcedCoroutines)
-        }
-    }
-}
-
 tasks.register("clean", Delete::class).configure {
     group = "build"
     delete(rootProject.buildDir)

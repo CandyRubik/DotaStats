@@ -1,9 +1,9 @@
 plugins {
-    id("android-app-convention")
-    id("kotlin-kapt")
-    id("androidx.navigation.safeargs.kotlin")
-    id("com.google.firebase.crashlytics")
-    id("com.google.gms.google-services")
+    id(libs.plugins.appConvention.get().pluginId)
+    id(libs.plugins.kotlinKapt.get().pluginId)
+    id(libs.plugins.navigationSafeArgs.get().pluginId)
+    id(libs.plugins.firebase.crashlytics.get().pluginId)
+    id(libs.plugins.google.services.get().pluginId)
 }
 
 android {
@@ -12,16 +12,7 @@ android {
 
 dependencies {
 
-    implementation(libs.androidCore)
-    implementation(libs.appCompat)
-    implementation(libs.material)
-    implementation(libs.constraint)
-    implementation(libs.fragmentKtx)
-    implementation(libs.navigationUi)
-    implementation(libs.navigationFragment)
-    implementation(libs.lifecycleViewModel)
-    implementation(libs.coroutinesAndroid)
-    implementation(libs.viewBindingDelegate)
+    implementation(libs.bundles.androidUi)
 
     //Dagger
     implementation(libs.dagger)
@@ -29,6 +20,11 @@ dependencies {
 
     //Retrofit
     implementation(libs.retrofit)
+
+    // Firebase
+    implementation(libs.firebaseCrashlytics)
+    implementation(libs.firebaseAnalytics)
+    implementation(libs.firebaseCore)
 
     implementation(project(Modules.PRESENTATION))
     implementation(project(Modules.NETWORK))
@@ -53,9 +49,5 @@ dependencies {
     implementation(project(Modules.Feature.NOTES_DETAILS))
     implementation(project(Modules.Feature.NOTES_ALL))
     implementation(project(Modules.Feature.MAIN))
-
-    // Firebase
-    implementation(libs.firebaseCrashlytics)
-    implementation(libs.firebaseAnalytics)
-    implementation(libs.firebaseCore)
 }
+

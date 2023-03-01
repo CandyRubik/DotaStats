@@ -1,7 +1,7 @@
 plugins {
-    id("android-library-convention")
-    id("kotlinx-serialization")
-    id("kotlin-kapt")
+    id(libs.plugins.libraryConvention.get().pluginId)
+    id(libs.plugins.kotlinxSerialization.get().pluginId)
+    id(libs.plugins.kotlinKapt.get().pluginId)
 }
 
 android {
@@ -11,8 +11,7 @@ android {
 dependencies {
 
     // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.kotlinxSerializationJson)
+    implementation(libs.bundles.retrofit)
 
     // Dagger
     implementation(libs.dagger)

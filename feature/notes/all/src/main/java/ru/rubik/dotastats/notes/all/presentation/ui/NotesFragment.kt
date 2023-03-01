@@ -54,7 +54,10 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
                 }
             },
             onItemClickListener = {
-                findNavController().navigate(navigation.navigateToNoteDetail(it))
+                viewModel.navigateToDetail(
+                    note = it,
+                    navController = findNavController(),
+                )
             }
         )
     }
@@ -78,7 +81,10 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
         }
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(navigation.navigateToNoteDetail(null))
+            viewModel.navigateToDetail(
+                note = null,
+                navController = findNavController(),
+            )
         }
     }
 }

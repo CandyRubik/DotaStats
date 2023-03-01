@@ -1,7 +1,7 @@
 plugins {
-    id("android-library-convention")
-    id("kotlin-kapt")
-    id("kotlin-parcelize")
+    id(libs.plugins.libraryConvention.get().pluginId)
+    id(libs.plugins.kotlinKapt.get().pluginId)
+    id(libs.plugins.kotlinParcelize.get().pluginId)
 }
 
 android {

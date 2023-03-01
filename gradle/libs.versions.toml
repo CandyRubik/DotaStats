@@ -91,3 +91,22 @@ firebaseAnalytics = { module = "com.google.firebase:firebase-analytics-ktx", ver
 firebaseCore = { module = "com.google.firebase:firebase-core", version = "21.1.1" }
 gmsServices = { module = "com.google.gms:google-services", version = "4.3.15" }
 firebaseCrashlyticsGradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version = "2.9.4" }
+
+[plugins]
+
+kotlinKapt = { id = "kotlin-kapt" }
+navigationSafeArgs = { id = "androidx.navigation.safeargs.kotlin" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics" }
+google-services = { id = "com.google.gms.google-services" }
+kotlinxSerialization = { id = "kotlinx-serialization" }
+kotlinParcelize = { id = "kotlin-parcelize" }
+
+#base plugins
+appConvention = { id = "android-app-convention" }
+libraryConvention = { id = "android-library-convention" }
+
+[bundles]
+retrofit = ["retrofit", "kotlinxSerializationJson"]
+test = ["mockitoTest", "mockitoInlineTest", "mockitoKotlinTest", "junitTest", "androidArchTest", "coroutinesTest"]
+networkFull = ["retrofit", "kotlinxSerializationJson", "loggingInterceptor", "serializationConverter"]
+androidUi = ["androidCore", "appCompat", "material", "fragmentKtx", "navigationUi", "navigationFragment", "lifecycleViewModel", "coroutinesAndroid", "viewBindingDelegate", "swipeToRefresh"]

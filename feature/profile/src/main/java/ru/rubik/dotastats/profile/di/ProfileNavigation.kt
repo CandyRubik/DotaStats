@@ -1,15 +1,11 @@
 package ru.rubik.dotastats.profile.di
 
-import androidx.annotation.IdRes
+import android.app.Activity
+import androidx.navigation.NavController
 
 interface ProfileNavigation {
 
-    @get:IdRes
-    val actionProfileFragmentToSettingsFragment: Int
+    fun navigateToSettings(navController: NavController)
 
-    @get:IdRes
-    val actionMainFragmentToAuthGraph: Int
-
-    @get:IdRes
-    val activityNavHost: Int
+    fun navigateToLogin(activity: Activity)
 }

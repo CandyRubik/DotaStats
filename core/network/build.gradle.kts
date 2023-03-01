@@ -1,5 +1,5 @@
 plugins {
-    id("android-library-convention")
+    id(libs.plugins.libraryConvention.get().pluginId)
 }
 
 android {
@@ -8,8 +8,5 @@ android {
 
 dependencies {
     // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.kotlinxSerializationJson)
-    implementation(libs.loggingInterceptor)
-    implementation(libs.serializationConverter)
+    implementation(libs.bundles.networkFull)
 }

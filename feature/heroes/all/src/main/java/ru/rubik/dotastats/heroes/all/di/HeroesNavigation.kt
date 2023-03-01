@@ -1,8 +1,8 @@
 package ru.rubik.dotastats.heroes.all.di
 
-import androidx.navigation.NavDirections
+import androidx.navigation.NavController
 
 interface HeroesNavigation {
 
-    fun navigateToHeroDetail(name: String): NavDirections
+    fun navigateToHeroDetail(name: String, navController: NavController)
 }

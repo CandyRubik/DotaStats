@@ -130,9 +130,8 @@ class WinLoseStatView
         return result
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas ?: return
 
         canvas.translate(paddingLeft.toFloat(), paddingTop.toFloat())
 
@@ -160,7 +159,7 @@ class WinLoseStatView
     }
 
     @Parcelize
-    class SavedState(
+    private class SavedState(
         val positivePercent: Int,
         @IgnoredOnParcel val state: Parcelable? = null
     ) : BaseSavedState(state)

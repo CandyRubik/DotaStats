@@ -1,6 +1,6 @@
 plugins {
-    id("android-library-convention")
-    id("kotlin-kapt")
+    id(libs.plugins.libraryConvention.get().pluginId)
+    id(libs.plugins.kotlinKapt.get().pluginId)
 }
 
 android {
@@ -14,10 +14,5 @@ dependencies {
     kapt(libs.daggerCompiler)
 
     // Test
-    testImplementation(libs.mockitoTest)
-    testImplementation(libs.mockitoInlineTest)
-    testImplementation(libs.mockitoKotlinTest)
-    testImplementation(libs.junitTest)
-    testImplementation(libs.androidArchTest)
-    testImplementation(libs.coroutinesTest)
+    testImplementation(libs.bundles.test)
 }
