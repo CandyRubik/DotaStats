@@ -16,5 +16,6 @@ dependencies {
     kapt(libs.daggerCompiler)
 
     implementation(project(Modules.DI))
+    implementation(project(Modules.DESIGN))
 
 }

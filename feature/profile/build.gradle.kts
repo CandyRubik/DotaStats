@@ -14,6 +14,7 @@ dependencies {
 
     // Dagger
     implementation(libs.dagger)
+    implementation("com.google.android.material:material:1.8.0")
     kapt(libs.daggerCompiler)
 
     //Retrofit
