@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DiffUtil
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import coil.transform.CircleCropTransformation
+import javax.inject.Inject
 import ru.rubik.dotastats.di.dependency.findFeatureExternalDependencies
 import ru.rubik.dotastats.di.viewmodel.MultiViewModelFactory
 import ru.rubik.dotastats.presentation.ui.ProgressBaseFragment
@@ -25,7 +26,6 @@ import ru.rubik.dotastats.profile.presentation.ProfileViewModel
 import ru.rubik.dotastats.profile.presentation.state.ContentState
 import ru.rubik.dotastats.profile.presentation.state.ProfileUiState
 import ru.rubik.dotastats.profile.presentation.ui.adapter.RecentPlayedMatchAdapter
-import javax.inject.Inject
 
 class ProfileFragment : ProgressBaseFragment(R.layout.fragment_profile) {
 
@@ -85,6 +85,11 @@ class ProfileFragment : ProgressBaseFragment(R.layout.fragment_profile) {
     }
 
     private fun setUpListeners() {
+
+        binding.appBarLayout.addOnOffsetChangedListener { _, verticalOffset ->
+            binding.swipeToRefresh.isEnabled = verticalOffset == 0
+        }
+
         binding.settingsButton.setOnClickListener {
             viewModel.navigateToSettings(findNavController())
         }
